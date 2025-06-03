@@ -60,6 +60,8 @@ public class GameManager : MonoBehaviour
 
     private void OnCellClicked(int index)
     {
+        if (_isWin || _isDraw) return;
+
         TMP_Text buttonText = _buttons[index].GetComponentInChildren<TMP_Text>();
 
         if (!string.IsNullOrEmpty(buttonText.text)) return;
@@ -69,8 +71,11 @@ public class GameManager : MonoBehaviour
 
         CheckWinner();
 
-        _isPlayerTurn = !_isPlayerTurn;
-        UpdatePlayerText();
+        if (!_isWin || !_isDraw)
+        {
+            _isPlayerTurn = !_isPlayerTurn;
+            UpdatePlayerText();
+        }
     }
 
     private void CheckWinner()
