@@ -1492,7 +1492,7 @@ GameObject:
   - component: {fileID: 667563379}
   - component: {fileID: 667563378}
   m_Layer: 5
-  m_Name: Image
+  m_Name: BackgroundImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3400,7 +3400,7 @@ GameObject:
   - component: {fileID: 2066315963}
   - component: {fileID: 2066315962}
   m_Layer: 5
-  m_Name: GridImage
+  m_Name: GridBackgroundImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
