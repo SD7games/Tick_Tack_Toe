@@ -24,6 +24,5 @@ public class BootstrapView : MonoBehaviour
             _progressText.text = $"{x}%";
         }, progress, (progress - _currentProgress) * 0.02f).SetEase(Ease.Linear);
     }
-
 }
 
