@@ -16,22 +16,22 @@ public class BootstrapController
     public async Task StartAsynk()
     {
         await Task.Delay(1000);
+        
+        _bootstrapView.SetProgress(11);
 
-        _bootstrapView.SetProgress(10);
+        await Task.Delay(1000);
+        
+        _bootstrapView.SetProgress(28);
 
         await Task.Delay(1000);
 
-        _bootstrapView.SetProgress(30);
+        _bootstrapView.SetProgress(63);
 
         await Task.Delay(1000);
 
-        _bootstrapView.SetProgress(60);
+        _bootstrapView.SetProgress(85);
 
         await Task.Delay(1000);
-
-        _bootstrapView.SetProgress(80);
-
-        await Task.Delay(500);
 
         _bootstrapView.SetProgress(100);
 
