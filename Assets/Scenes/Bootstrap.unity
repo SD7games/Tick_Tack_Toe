@@ -139,6 +139,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2205288587352796138, guid: 849a0617cf93e4edc8fec0f9626ebd7d, type: 3}
+      propertyPath: _scaleAnimator
+      value: 
+      objectReference: {fileID: 1442779788}
     - target: {fileID: 6211533765288841936, guid: 849a0617cf93e4edc8fec0f9626ebd7d, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -222,14 +226,17 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 863343585910732143, guid: 849a0617cf93e4edc8fec0f9626ebd7d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1442779788}
   m_SourcePrefab: {fileID: 100100000, guid: 849a0617cf93e4edc8fec0f9626ebd7d, type: 3}
 --- !u!114 &902882143 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2205288587352796138, guid: 849a0617cf93e4edc8fec0f9626ebd7d, type: 3}
   m_PrefabInstance: {fileID: 902882137}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1442779783}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 02e00d3b6a00fed439fe388d6696344c, type: 3}
@@ -451,6 +458,27 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!1 &1442779783 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 863343585910732143, guid: 849a0617cf93e4edc8fec0f9626ebd7d, type: 3}
+  m_PrefabInstance: {fileID: 902882137}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1442779788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442779783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16e1fb0464e48c148b24e03c2b117023, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 0.6
+  _targetScale: 1.2
+  _ease: 27
+  _loop: 1
 --- !u!1001 &1333698541953585571
 PrefabInstance:
   m_ObjectHideFlags: 0

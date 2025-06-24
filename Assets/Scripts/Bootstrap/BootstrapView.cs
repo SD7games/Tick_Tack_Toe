@@ -14,17 +14,14 @@ public class BootstrapView : MonoBehaviour
     [SerializeField]
     private TMP_Text _progressText;
 
+    [SerializeField]
+    private ScaleAnimator _scaleAnimator;
+
     private int _currentProgress = 0;
-    private Tween _imageTween;
 
     private void Start()
     {
-        AnimationImage();
-    }
-
-    private void AnimationImage()
-    {
-        _imageTween = _progressImage.rectTransform.DOScale(1.2f, 0.6f).SetEase(Ease.OutBack).SetLoops(10, LoopType.Yoyo);
+        _scaleAnimator.Animate(_progressImage);
     }
 
     public void SetProgress(int progress)
@@ -41,10 +38,7 @@ public class BootstrapView : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (_imageTween != null && _imageTween.IsActive())
-        {
-            _imageTween.Kill();
-        }
+        _scaleAnimator.DoKillAnimate();
     }
 }
 
