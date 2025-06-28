@@ -151,6 +151,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 744199103969256857, guid: 68ad81b3c7659be498ce1215dda573c6, type: 3}
+      propertyPath: m_text
+      value: AI Rival
+      objectReference: {fileID: 0}
     - target: {fileID: 889257052730305488, guid: 68ad81b3c7659be498ce1215dda573c6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
