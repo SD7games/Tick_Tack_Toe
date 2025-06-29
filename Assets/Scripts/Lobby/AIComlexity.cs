@@ -1,3 +1,5 @@
+using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -41,6 +43,7 @@ public class AIComlexity : MonoBehaviour
     private string _currentDifficutly;
 
     private bool _optionsVisible = false;
+    private bool _canPulse = true;
 
     private void Start()
     {
@@ -49,13 +52,34 @@ public class AIComlexity : MonoBehaviour
         _opt2Pos = _opt2RT.anchoredPosition;
 
         _currentDifficutly = PlayerPrefs.GetString("Difficutly", "Easy");
-
+        StartCoroutine(PulseRoutine());
         UpdateMainButton(_currentDifficutly);
         HideOptionsInstant();
 
         _mainButton.onClick.AddListener(ToggleOptions);
         _opt1Button.onClick.AddListener(() => OnSelect(_opt1Button));
         _opt2Button.onClick.AddListener(() => OnSelect(_opt2Button));
+    }
+
+    private IEnumerator PulseRoutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(4f);
+
+            if (_canPulse)
+            {
+                _mainRT.DOKill();
+                _mainRT.localScale = Vector3.one;
+
+                _mainRT.DOScale(1.2f, 0.2f)
+                    .SetEase(Ease.InOutSine)
+                    .OnComplete(() =>
+                    {
+                        _mainRT.DOScale(1f, 0.2f).SetEase(Ease.InSine);
+                    });
+            }
+        }
     }
 
     private void ToggleOptions()
@@ -80,6 +104,8 @@ public class AIComlexity : MonoBehaviour
 
     private void ShowOptions()
     {
+        _canPulse = false;
+
         List<string> otherOptions = new(_difficutlyColors.Keys);
         otherOptions.Remove(_currentDifficutly);
 
@@ -115,6 +141,7 @@ public class AIComlexity : MonoBehaviour
         _opt2RT.anchoredPosition = _opt2Pos;
 
         _optionsVisible = false;
+        _canPulse = true;
     }
 
     private void SetupOption(Button button, string diff)
