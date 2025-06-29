@@ -6,16 +6,12 @@ public class ScaleAnimator : MonoBehaviour
 {
     [SerializeField]
     private float _duration = 0.5f;
-
     [SerializeField]
     private float _targetScale = 1.2f;
-
     [SerializeField]
     private Ease _ease = Ease.OutBack;
-
     [SerializeField]
     private LoopType _loopType = LoopType.Yoyo;
-
     [SerializeField]
     private bool _loop = false;
 

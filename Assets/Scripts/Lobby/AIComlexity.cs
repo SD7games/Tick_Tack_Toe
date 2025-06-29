@@ -9,25 +9,18 @@ public class AIComlexity : MonoBehaviour
 {
     [SerializeField]
     private Button _mainButton;
-
     [SerializeField]
     private Button _opt1Button;
-
     [SerializeField]
     private Button _opt2Button;
-
     [SerializeField]
     private CanvasGroup _opt1CanvasGroup;
-
     [SerializeField]
     private CanvasGroup _opt2CanvasGroup;
-
     [SerializeField]
     private RectTransform _mainRT;
-
     [SerializeField]
     private RectTransform _opt1RT;
-
     [SerializeField]
     private RectTransform _opt2RT;
 

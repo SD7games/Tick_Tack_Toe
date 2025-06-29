@@ -7,13 +7,10 @@ public class BootstrapView : MonoBehaviour
 {
     [SerializeField]
     private Slider _slider;
-
     [SerializeField]
     private Image _progressImage;
-
     [SerializeField]
     private TMP_Text _progressText;
-
     [SerializeField]
     private ScaleAnimator _scaleAnimator;
 

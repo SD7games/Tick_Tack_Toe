@@ -6,16 +6,12 @@ public class ScrollController : MonoBehaviour
 {
     [SerializeField]
     private ScrollRect _scrollRect;
-
     [SerializeField]
     private Button _upButton;
-
     [SerializeField]
     private Button _downButton;
-
     [SerializeField]
     private float _scrollStep = 0.1f;
-
     [SerializeField]
     private float _animationDuration = 0.3f;
 

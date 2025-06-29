@@ -9,10 +9,8 @@ public class LobbyView : MonoBehaviour
 
     [SerializeField]
     private Image _targetImage;
-
     [SerializeField]
     private ScaleAnimator _scaleAnimator;
-
     [SerializeField]
     private Button _startButton;      
 
