@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AIComlexity : MonoBehaviour
+public class AIComlexityUI : MonoBehaviour
 {
     [SerializeField]
     private Button _mainButton;
