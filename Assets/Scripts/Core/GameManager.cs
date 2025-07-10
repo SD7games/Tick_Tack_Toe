@@ -82,14 +82,7 @@ public class GameManager : MonoBehaviour
 
     private void CheckWinner()
     {
-        string[,] board = new string[3, 3];
-        for (int i = 0; i < _buttons.Count; i++)
-        {
-            TMP_Text text = _buttons[i].GetComponentInChildren<TMP_Text>();
-            int row = i / 3;
-            int col = i % 3;
-            board[row, col] = text.text;
-        }
+        string[,] board = GetBoardState();
 
         string winner = _winChecker.CheckWinner(board);
 
@@ -105,5 +98,18 @@ public class GameManager : MonoBehaviour
         }
 
         UpdatePlayerText();
+    }
+
+    private string[,] GetBoardState()
+    {
+        string[,] board = new string[3, 3];
+        for (int i = 0; i < _buttons.Count; i++)
+        {
+            TMP_Text text = _buttons[i].GetComponentInChildren<TMP_Text>();
+            int row = i / 3;
+            int col = i % 3;
+            board[row, col] = text.text;
+        }
+        return board;
     }
 }
