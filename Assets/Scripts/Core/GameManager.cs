@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     private bool _isWin = false;
     private bool _isDraw = false;
 
+    private WinChecker _winChecker = new WinChecker();
+
     private void Start()
     {
         CleanButtonText();
@@ -89,61 +91,17 @@ public class GameManager : MonoBehaviour
             board[row, col] = text.text;
         }
 
-        string winner = null;
+        string winner = _winChecker.CheckWinner(board);
 
-
-        for (int i = 0; i < 3; i++)
-        {
-            if (!string.IsNullOrEmpty(board[i, 0]) &&
-                        board[i, 0] == board[i, 1] &&
-                        board[i, 1] == board[i, 2])
-            {
-                winner = board[i, 0];
-            }
-
-            if (!string.IsNullOrEmpty(board[0, i]) &&
-                        board[0, i] == board[1, i] &&
-                        board[1, i] == board[2, i])
-            {
-                winner = board[0, i];
-            }
-        }
-
-        if (!string.IsNullOrEmpty(board[0, 0]) &&
-                    board[0, 0] == board[1, 1] &&
-                    board[1, 1] == board[2, 2])
-        {
-            winner = board[0, 0];
-        }
-
-        if (!string.IsNullOrEmpty(board[0, 2]) &&
-                    board[0, 2] == board[1, 1] &&
-                    board[1, 1] == board[2, 0])
-        {
-            winner = board[0, 2];
-        }
-
-        if (winner is not null)
+        if (winner != null)
         {
             _isWin = true;
             foreach (var button in _buttons)
                 button.interactable = false;
-
-            return;
         }
-
-        foreach (var button in _buttons)
+        else if (_winChecker.IsDraw(board))
         {
-            string checkButton = button.GetComponentInChildren<TMP_Text>().text;
-            if (string.IsNullOrEmpty(checkButton))
-            {
-                _isDraw = false;
-                break;
-            }
-            else
-            {
-                _isDraw = true;
-            }
+            _isDraw = true;
         }
 
         UpdatePlayerText();
