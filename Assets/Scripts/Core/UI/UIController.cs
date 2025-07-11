@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
-{
+{   
     [SerializeField]
     private TMP_Text _playerText;
     [SerializeField]
@@ -24,5 +24,5 @@ public class UIController : MonoBehaviour
     public void ShowResult(string resultText)
     {
         _playerText.text = resultText;
-    }
+    }  
 }

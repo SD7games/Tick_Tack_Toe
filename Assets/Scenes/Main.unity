@@ -2321,6 +2321,7 @@ MonoBehaviour:
   - {fileID: 1966403888}
   - {fileID: 409210914}
   _ui: {fileID: 1691740079}
+  _boardView: {fileID: 1691740080}
 --- !u!4 &1084768364
 Transform:
   m_ObjectHideFlags: 0
@@ -3686,6 +3687,7 @@ GameObject:
   - component: {fileID: 1691740076}
   - component: {fileID: 1691740075}
   - component: {fileID: 1691740079}
+  - component: {fileID: 1691740080}
   m_Layer: 5
   m_Name: MainGameView
   m_TagString: Untagged
@@ -3810,6 +3812,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerText: {fileID: 1217291838}
   _restartButton: {fileID: 95009455}
+--- !u!114 &1691740080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691740074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21b100405b6dc034f8d6db08a985ead9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _winLines:
+  - {fileID: 848327025}
+  - {fileID: 1549056622}
+  - {fileID: 828293903}
+  - {fileID: 380100330}
+  - {fileID: 751310979}
+  - {fileID: 1293292700}
+  - {fileID: 1055531329}
+  - {fileID: 38117964}
 --- !u!1 &1814502671
 GameObject:
   m_ObjectHideFlags: 0

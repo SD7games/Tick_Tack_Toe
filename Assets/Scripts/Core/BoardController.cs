@@ -50,5 +50,4 @@ public class BoardController
             button.interactable = false;
         }
     }
-
 }

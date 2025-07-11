@@ -1,60 +1,61 @@
 
 public class WinChecker
 {
-    public string CheckWinner(string[,] board)
+    public bool IsGameOver(string[,] board, out string winner, out BoardView.WinLineType? winType)
     {
-        for (int i = 0; i < 3; i++)
+        winner = null;
+        winType = null;
+
+        for (int row = 0; row < 3; row++)
         {
-            // Horizontal
-            if (!string.IsNullOrEmpty(board[i, 0]) &&
-                board[i, 0] == board[i, 1] &&
-                board[i, 1] == board[i, 2])
-                return board[i, 0];
-
-
-            // Vertical
-            if (!string.IsNullOrEmpty(board[0, i]) &&
-                board[0, i] == board[1, i] &&
-                board[1, i] == board[2, i])
-                return board[0, i];
+            if (!string.IsNullOrEmpty(board[row, 0]) &&
+                board[row, 0] == board[row, 1] &&
+                board[row, 1] == board[row, 2])
+            {
+                winner = board[row, 0];
+                winType = (BoardView.WinLineType) row; 
+                return true;
+            }
         }
 
-        // DiagonalUpLeft
+        for (int col = 0; col < 3; col++)
+        {
+            if (!string.IsNullOrEmpty(board[0, col]) &&
+                board[0, col] == board[1, col] &&
+                board[1, col] == board[2, col])
+            {
+                winner = board[0, col];
+                winType = (BoardView.WinLineType) (3 + col);
+                return true;
+            }
+        }
+
         if (!string.IsNullOrEmpty(board[0, 0]) &&
             board[0, 0] == board[1, 1] &&
             board[1, 1] == board[2, 2])
-            return board[0, 0];
+        {
+            winner = board[0, 0];
+            winType = BoardView.WinLineType.DiagonalUpLeft;
+            return true;
+        }
 
-        //DiagonalUpRight
         if (!string.IsNullOrEmpty(board[0, 2]) &&
             board[0, 2] == board[1, 1] &&
             board[1, 1] == board[2, 0])
-            return board[0, 2];
-
-        return null;
-    }
-
-    public bool IsDraw(string[,] board)
-    {
-        foreach (var cell in board)
         {
-            if (string.IsNullOrEmpty(cell))
-                return false;
-        }
-        return true;
-    }
-
-    public bool IsGameOver(string[,] board, out string winner)
-    {
-        winner = CheckWinner(board);
-        if (winner is not null) return true;
-        if (IsDraw(board))
-        {
-            winner = null;
+            winner = board[0, 2];
+            winType = BoardView.WinLineType.DiagonalUpRight;
             return true;
         }
-        return false;
-    }
+
+        // Ничья
+        for (int r = 0; r < 3; r++)
+            for (int c = 0; c < 3; c++)
+                if (string.IsNullOrEmpty(board[r, c]))
+                    return false; 
+
+        return true; 
+    }  
 }
 
 
