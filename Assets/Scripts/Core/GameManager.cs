@@ -13,103 +13,56 @@ public class GameManager : MonoBehaviour
     private TMP_Text _playerText;
 
     private bool _isPlayerTurn = false;
-    private bool _isWin = false;
-    private bool _isDraw = false;
+    private string _currentSymbol => _isPlayerTurn ? "X" : "O";
 
     private WinChecker _winChecker = new WinChecker();
+    private BoardController _board;
 
     private void Start()
     {
-        CleanButtonText();
+        _board = new BoardController(_buttons);
 
         for (int i = 0; i < _buttons.Count; i++)
         {
-            int index = i;
-            _buttons[i].onClick.AddListener(() => OnCellClicked(index));
+            RegisterClick(i);
         }
         _restartButton.onClick.AddListener(RestartGame);
-        UpdatePlayerText();
+        RestartGame();
     }
 
-    private void CleanButtonText()
+    private void RegisterClick(int index)
     {
-        foreach (var button in _buttons)
-        {
-            button.GetComponentInChildren<TMP_Text>().text = "";
-            button.interactable = true;
-        }
+        _buttons[index].onClick.RemoveAllListeners();
+        _buttons[index].onClick.AddListener(() => OnCellClicked(index));
     }
 
     private void RestartGame()
     {
-        CleanButtonText();
-        _isWin = false;
-        _isDraw = false;
+        _board.Reset();
         _isPlayerTurn = false;
-        UpdatePlayerText();
-    }
-
-    private void UpdatePlayerText()
-    {
-        if (_isWin)
-            _playerText.text = _isPlayerTurn ? "Player O wins!" : "Player X wins!";
-        else
-            _playerText.text = _isPlayerTurn ? "Move:   Player X" : "Move:   Player O";
-
-        if (_isDraw)
-            _playerText.text = "Draw!";
+        _playerText.text = $"Move: Player {_currentSymbol}";
     }
 
     private void OnCellClicked(int index)
     {
-        if (_isWin || _isDraw) return;
+        if (!_board.IsCellEmpty(index)) return;
 
-        TMP_Text buttonText = _buttons[index].GetComponentInChildren<TMP_Text>();
+        _board.SetCell(index, _currentSymbol);
 
-        if (!string.IsNullOrEmpty(buttonText.text)) return;
+        string[,] boardState = _board.GetBoardState();
 
-        buttonText.text = _isPlayerTurn ? "X" : "O";
-        _buttons[index].interactable = false;
-
-        CheckWinner();
-
-        if (!_isWin || !_isDraw)
+        if (_winChecker.IsGameOver(boardState, out string winner))
+        {
+            if (winner != null)
+                _playerText.text = $"Player {winner} wins!";
+            else
+                _playerText.text = "Draw!";
+            _board.DisableAll();
+        }
+        else
         {
             _isPlayerTurn = !_isPlayerTurn;
-            UpdatePlayerText();
+            _playerText.text = $"Move: Player {_currentSymbol}";
         }
-    }
-
-    private void CheckWinner()
-    {
-        string[,] board = GetBoardState();
-
-        string winner = _winChecker.CheckWinner(board);
-
-        if (winner != null)
-        {
-            _isWin = true;
-            foreach (var button in _buttons)
-                button.interactable = false;
-        }
-        else if (_winChecker.IsDraw(board))
-        {
-            _isDraw = true;
-        }
-
-        UpdatePlayerText();
-    }
-
-    private string[,] GetBoardState()
-    {
-        string[,] board = new string[3, 3];
-        for (int i = 0; i < _buttons.Count; i++)
-        {
-            TMP_Text text = _buttons[i].GetComponentInChildren<TMP_Text>();
-            int row = i / 3;
-            int col = i % 3;
-            board[row, col] = text.text;
-        }
-        return board;
     }
 }
