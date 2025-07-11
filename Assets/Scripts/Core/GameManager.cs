@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,61 +7,54 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private List<Button> _buttons;
     [SerializeField]
-    private Button _restartButton;
-    [SerializeField]
-    private TMP_Text _playerText;
+    private UIController _ui;
 
-    private bool _isPlayerTurn = false;
-    private string _currentSymbol => _isPlayerTurn ? "X" : "O";
-
-    private WinChecker _winChecker = new WinChecker();
+    private InputController _input;
     private BoardController _board;
+    private TurnManager _turnManager;
+    private WinChecker _winChecker;
 
     private void Start()
     {
+        _input = new InputController(_buttons);
+        _input.OnCellClicked += OnCellClicked;
         _board = new BoardController(_buttons);
+        _turnManager = new TurnManager();
+        _winChecker = new WinChecker();
 
-        for (int i = 0; i < _buttons.Count; i++)
-        {
-            RegisterClick(i);
-        }
-        _restartButton.onClick.AddListener(RestartGame);
+        _ui.SetRestartListener(RestartGame);
         RestartGame();
     }
 
-    private void RegisterClick(int index)
+    private void OnDestroy()
     {
-        _buttons[index].onClick.RemoveAllListeners();
-        _buttons[index].onClick.AddListener(() => OnCellClicked(index));
+        if (_input != null)
+            _input.OnCellClicked -= OnCellClicked;
     }
 
     private void RestartGame()
     {
         _board.Reset();
-        _isPlayerTurn = false;
-        _playerText.text = $"Move: Player {_currentSymbol}";
+        _turnManager.Reset();
+        _ui.ShowCurrentPlayer(_turnManager.CurrentSymbol);
     }
 
     private void OnCellClicked(int index)
     {
         if (!_board.IsCellEmpty(index)) return;
 
-        _board.SetCell(index, _currentSymbol);
-
+        _board.SetCell(index, _turnManager.CurrentSymbol);
         string[,] boardState = _board.GetBoardState();
 
         if (_winChecker.IsGameOver(boardState, out string winner))
         {
-            if (winner != null)
-                _playerText.text = $"Player {winner} wins!";
-            else
-                _playerText.text = "Draw!";
+            _ui.ShowResult(winner != null ? $"Player {winner} wins!" : "Draw!");
             _board.DisableAll();
         }
         else
         {
-            _isPlayerTurn = !_isPlayerTurn;
-            _playerText.text = $"Move: Player {_currentSymbol}";
+            _turnManager.NextTurn();
+            _ui.ShowCurrentPlayer(_turnManager.CurrentSymbol);
         }
     }
 }
