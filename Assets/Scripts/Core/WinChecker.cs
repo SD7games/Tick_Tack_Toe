@@ -48,7 +48,7 @@ public class WinChecker
             return true;
         }
 
-        // Ничья
+        // Draw
         for (int r = 0; r < 3; r++)
             for (int c = 0; c < 3; c++)
                 if (string.IsNullOrEmpty(board[r, c]))
