@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f9f821b898935d4f965e7b69ed0edfb, type: 3}
   m_Name: EmojiContainer
   m_EditorClassIdentifier: 
-  _emoji:
+  _emojiSprites:
   - {fileID: -4505556761215724774, guid: 51e0294cbb8453949a39d7479202d0f6, type: 3}
   - {fileID: 6755897823264609867, guid: 85bb559fbd1244c4baf92520a73de7e9, type: 3}
   - {fileID: -1621214333705032639, guid: 2f1703a21bf3ae84a8459e7499d132f1, type: 3}

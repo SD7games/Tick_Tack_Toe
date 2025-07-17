@@ -14,12 +14,14 @@ public class ScrollController : MonoBehaviour
     private float _scrollStep = 0.1f;
     [SerializeField]
     private float _animationDuration = 0.3f;
+    [SerializeField]
+    private ContentScrollController _contentScrollController;
 
     private Tween _currentTween;
 
     private void Start()
     {
-        UpdateButtonState();
+        _contentScrollController.OnGenerationComplete += UpdateButtonState;
         _upButton.onClick.AddListener(() => ScrollUp());
         _downButton.onClick.AddListener(() => ScrollDown());
     }

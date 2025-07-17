@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Assets/Emoji")]
+[CreateAssetMenu(fileName = "AssetsEmoji", menuName = "Assets/Emoji")]
 public class EmojiData : ScriptableObject
 {
-    [SerializeField]
-    private List<Sprite> _emoji;
+    public List<Sprite> _emojiSprites;
 }

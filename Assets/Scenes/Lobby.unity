@@ -127,6 +127,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 63989139885706715, guid: 68ad81b3c7659be498ce1215dda573c6, type: 3}
+      propertyPath: _contentScrollController
+      value: 
+      objectReference: {fileID: 1748327747}
     - target: {fileID: 1252497575886891829, guid: 68ad81b3c7659be498ce1215dda573c6, type: 3}
       propertyPath: m_Name
       value: 'LobbyViewCanvas '
@@ -218,11 +222,15 @@ PrefabInstance:
     - target: {fileID: 5984412622921860088, guid: 68ad81b3c7659be498ce1215dda573c6, type: 3}
       propertyPath: _viewButtonPrefab
       value: 
-      objectReference: {fileID: 3534264351812948777, guid: 64f914c22fbc2e14fba9a9cd81f19aaa, type: 3}
-    m_RemovedComponents: []
+      objectReference: {fileID: 529371706390648521, guid: 64f914c22fbc2e14fba9a9cd81f19aaa, type: 3}
+    m_RemovedComponents:
+    - {fileID: 5984412622921860088, guid: 68ad81b3c7659be498ce1215dda573c6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1252497575886891829, guid: 68ad81b3c7659be498ce1215dda573c6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1748327747}
   m_SourcePrefab: {fileID: 100100000, guid: 68ad81b3c7659be498ce1215dda573c6, type: 3}
 --- !u!1 &451364642
 GameObject:
@@ -440,6 +448,31 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!224 &914877806 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3248182636976794662, guid: 68ad81b3c7659be498ce1215dda573c6, type: 3}
+  m_PrefabInstance: {fileID: 54628099}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1748327738 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1252497575886891829, guid: 68ad81b3c7659be498ce1215dda573c6, type: 3}
+  m_PrefabInstance: {fileID: 54628099}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1748327747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748327738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f645e9f77a403154da64d8e90199b8ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _emojiData: {fileID: 11400000, guid: 6b6c84d126464c040bbed916feba2efe, type: 2}
+  _emojiButtonPrefab: {fileID: 2987793709936732318, guid: 64f914c22fbc2e14fba9a9cd81f19aaa, type: 3}
+  _contentParent: {fileID: 914877806}
 --- !u!1001 &2578036750480635083
 PrefabInstance:
   m_ObjectHideFlags: 0
