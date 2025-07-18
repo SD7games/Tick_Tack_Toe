@@ -420,6 +420,7 @@ GameObject:
   - component: {fileID: 8079470758844047790}
   - component: {fileID: 63989139885706715}
   - component: {fileID: 506398473440719228}
+  - component: {fileID: 1937385149223498308}
   m_Layer: 5
   m_Name: 'LobbyViewCanvas '
   m_TagString: Untagged
@@ -572,6 +573,7 @@ MonoBehaviour:
   _downButton: {fileID: 156228391192458012}
   _scrollStep: 0.35
   _animationDuration: 0.3
+  _contentScrollController: {fileID: 1937385149223498308}
 --- !u!114 &506398473440719228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -592,6 +594,21 @@ MonoBehaviour:
   _mainRT: {fileID: 4830480552193756361}
   _opt1RT: {fileID: 3315001811845922295}
   _opt2RT: {fileID: 7573518544571580220}
+--- !u!114 &1937385149223498308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252497575886891829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f645e9f77a403154da64d8e90199b8ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _emojiData: {fileID: 11400000, guid: 6b6c84d126464c040bbed916feba2efe, type: 2}
+  _emojiButtonPrefab: {fileID: 2987793709936732318, guid: 64f914c22fbc2e14fba9a9cd81f19aaa, type: 3}
+  _contentParent: {fileID: 3248182636976794662}
 --- !u!1 &1452869551873087625
 GameObject:
   m_ObjectHideFlags: 0
@@ -1113,7 +1130,6 @@ GameObject:
   - component: {fileID: 3248182636976794662}
   - component: {fileID: 3099587710452739186}
   - component: {fileID: 2050441362443049210}
-  - component: {fileID: 5984412622921860088}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -1178,20 +1194,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
---- !u!114 &5984412622921860088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2856357333625167732}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f645e9f77a403154da64d8e90199b8ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _contentButtons: []
-  _viewButtonPrefab: {fileID: 0}
 --- !u!1 &3168309281242911788
 GameObject:
   m_ObjectHideFlags: 0
