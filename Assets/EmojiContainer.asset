@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: EmojiContainer
   m_EditorClassIdentifier: 
   _emojiSprites:
+  - {fileID: -3773500811981285297, guid: 9af993ea76f341642b495438118c4f97, type: 3}
+  - {fileID: -1352124187264379409, guid: bde90d1ce8f99e449bd6126cb0fb9496, type: 3}
   - {fileID: -4505556761215724774, guid: 51e0294cbb8453949a39d7479202d0f6, type: 3}
   - {fileID: 6755897823264609867, guid: 85bb559fbd1244c4baf92520a73de7e9, type: 3}
   - {fileID: -1621214333705032639, guid: 2f1703a21bf3ae84a8459e7499d132f1, type: 3}
@@ -87,7 +89,6 @@ MonoBehaviour:
   - {fileID: -4810446054895922272, guid: 581e2c5aa53081f448f2a27aef9840f9, type: 3}
   - {fileID: 650569685266778785, guid: f1e3d1208921bfb4f9bcd758022b0178, type: 3}
   - {fileID: -4935995765557754380, guid: 9ecb2789bdbb2074d8d5fda8087ea8af, type: 3}
-  - {fileID: -1352124187264379409, guid: bde90d1ce8f99e449bd6126cb0fb9496, type: 3}
   - {fileID: -7738708064007962704, guid: 8eb78e1f458b43e41b562b2303473807, type: 3}
   - {fileID: -757140073036609196, guid: 89cff70e4cadd9046b20cc1eb92b1da5, type: 3}
   - {fileID: 6570726953748318044, guid: 936d7da6ca082e24390d4bd215902701, type: 3}
@@ -96,6 +97,7 @@ MonoBehaviour:
   - {fileID: 3673008245632428896, guid: b7c0daa3936587c4da4da897fdb5416f, type: 3}
   - {fileID: -7782789731351440211, guid: 6c4c293e5f2eb3342b4be7286f549fee, type: 3}
   - {fileID: 2180948900375915765, guid: a5e80cdcc3b1e2041b9507bd3c806193, type: 3}
+  - {fileID: -8711783881005693619, guid: 92a81df524469ae4a8de72db23c3144a, type: 3}
   - {fileID: -4777145673052489585, guid: 53fcf50a5708bae4ab87c2cbba719739, type: 3}
   - {fileID: -5680550182763094991, guid: 399a12ad00c345846a3e662dc026b240, type: 3}
   - {fileID: 4476729584135962526, guid: 023001c76d3a77a48acb57d5067eafb5, type: 3}
@@ -113,4 +115,3 @@ MonoBehaviour:
   - {fileID: -8299318309307091320, guid: b108f9a293e4d2441b4ddb40228f15fc, type: 3}
   - {fileID: -3892884996109682388, guid: 51b9b20208a15564dbeb85353fbe227e, type: 3}
   - {fileID: -6060358812211520438, guid: 6675799afdd123b4280b2b485ff1fee4, type: 3}
-  - {fileID: -8711783881005693619, guid: 92a81df524469ae4a8de72db23c3144a, type: 3}

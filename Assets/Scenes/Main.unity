@@ -445,7 +445,7 @@ MonoBehaviour:
   - {fileID: 401767181}
   - {fileID: 1966403888}
   - {fileID: 409210914}
-  _ui: {fileID: 1691740079}
+  _uiController: {fileID: 1937782713}
   _boardView: {fileID: 1691740080}
 --- !u!4 &1084768364
 Transform:
@@ -574,17 +574,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1691740079 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3520066263064486894, guid: 5151394c9c934a745901ea04fa791d2f, type: 3}
-  m_PrefabInstance: {fileID: 2396086917688603840}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22731a35115464447a0021f471b51fe7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1691740080 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5372593084372241551, guid: 5151394c9c934a745901ea04fa791d2f, type: 3}
@@ -605,6 +594,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1937782713 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3520066263064486894, guid: 5151394c9c934a745901ea04fa791d2f, type: 3}
+  m_PrefabInstance: {fileID: 2396086917688603840}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22731a35115464447a0021f471b51fe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1966403888 stripped
@@ -771,6 +771,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5371662105589234002, guid: 5151394c9c934a745901ea04fa791d2f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1352124187264379409, guid: bde90d1ce8f99e449bd6126cb0fb9496, type: 3}
+    - target: {fileID: 6765818434235788468, guid: 5151394c9c934a745901ea04fa791d2f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -3773500811981285297, guid: 9af993ea76f341642b495438118c4f97, type: 3}
     - target: {fileID: 7170259583944819771, guid: 5151394c9c934a745901ea04fa791d2f, type: 3}
       propertyPath: m_Name
       value: MainGameView

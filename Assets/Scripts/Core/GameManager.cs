@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private List<Button> _buttons;
     [SerializeField]
-    private UIController _ui;
+    private UIController _uiController;
     [SerializeField]
     private BoardView _boardView;
 
@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
         _turnManager = new TurnManager();
         _winChecker = new WinChecker();
 
-        _ui.SetRestartListener(RestartGame);
+        _uiController.SetRestartListener(RestartGame);
         RestartGame();
     }
 
@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
         _board.Reset();
         _turnManager.Reset();
         _boardView.HideAllLines();
-        _ui.ShowCurrentPlayer(_turnManager.CurrentSymbol);
+        _uiController.ShowCurrentPlayer(_turnManager.CurrentSymbol);
     }
 
     private void OnCellClicked(int index)
@@ -57,11 +57,11 @@ public class GameManager : MonoBehaviour
                 if (winLine.HasValue)
                     _boardView.ShowWinLine(winLine.Value);
 
-                _ui.ShowResult($"Player {winner} wins!");
+                _uiController.ShowResult($"Player {winner} wins!");
             }
             else
             {
-                _ui.ShowResult("Draw!");
+                _uiController.ShowResult("Draw!");
             }
 
             _board.DisableAll();
@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
         else
         {
             _turnManager.NextTurn();
-            _ui.ShowCurrentPlayer(_turnManager.CurrentSymbol);
+            _uiController.ShowCurrentPlayer(_turnManager.CurrentSymbol);
         }
     }
 }
