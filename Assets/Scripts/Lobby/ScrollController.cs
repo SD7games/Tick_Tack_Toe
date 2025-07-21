@@ -21,9 +21,14 @@ public class ScrollController : MonoBehaviour
 
     private void Start()
     {
-        _contentScrollController.OnGenerationComplete += UpdateButtonState;
+        _contentScrollController.OnGenerationComplete += UpdateCanvasForce;
         _upButton.onClick.AddListener(() => ScrollUp());
         _downButton.onClick.AddListener(() => ScrollDown());
+    }
+
+    private void OnDestroy()
+    {
+        _contentScrollController.OnGenerationComplete -= UpdateCanvasForce;
     }
 
     private void UpdateButtonState()
@@ -31,6 +36,12 @@ public class ScrollController : MonoBehaviour
         float pos = _scrollRect.verticalNormalizedPosition;
         _upButton.interactable = pos < 0.99f;
         _downButton.interactable = pos > 0.01f;
+    }
+
+    private void UpdateCanvasForce()
+    {
+        _upButton.interactable = false;
+        Canvas.ForceUpdateCanvases();
     }
 
     private void ScrollUp()

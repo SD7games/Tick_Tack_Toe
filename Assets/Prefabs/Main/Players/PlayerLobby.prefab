@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5225136471487555224}
   - component: {fileID: 6863368328980441272}
   m_Layer: 0
-  m_Name: Player
+  m_Name: PlayerLobby
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,3 +48,5 @@ MonoBehaviour:
   _playerSign: {fileID: 0}
   _playerInputField: {fileID: 0}
   _emojiData: {fileID: 11400000, guid: 6b6c84d126464c040bbed916feba2efe, type: 2}
+  _contentScrollController: {fileID: 0}
+  _playerSettings: {fileID: 11400000, guid: 1fd9e837469c78c45b8e05cf2ba21179, type: 2}

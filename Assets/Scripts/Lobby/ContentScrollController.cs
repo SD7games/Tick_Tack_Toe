@@ -20,7 +20,7 @@ public class ContentScrollController : MonoBehaviour
     }
 
     private void GenerateEmojiButtons()
-    {   
+    {
         foreach (Transform child in _contentParent)
         {
             Destroy(child.gameObject);
