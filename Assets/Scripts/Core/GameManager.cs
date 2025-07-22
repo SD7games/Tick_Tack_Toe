@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -21,6 +23,8 @@ public class GameManager : MonoBehaviour
     private TMP_Text _playerName;
     [SerializeField]
     private TMP_Text _aiRivalName;
+    [SerializeField]
+    private Button _backToLobbyButton;
 
     private Sprite _playerSprite;
     private Sprite _aiRivalSprite;
@@ -30,6 +34,8 @@ public class GameManager : MonoBehaviour
     private BoardController _board;
     private TurnManager _turnManager;
     private WinChecker _winChecker;
+
+    private const string LobbyScene = "Lobby";
 
     private void Start()
     {
@@ -45,6 +51,7 @@ public class GameManager : MonoBehaviour
         _winChecker = new WinChecker();
 
         _uiController.SetRestartListener(RestartGame);
+        _backToLobbyButton.onClick.AddListener(() => LoadLobbyScene());
         RestartGame();
     }
 
@@ -97,5 +104,10 @@ public class GameManager : MonoBehaviour
         if (sprite == _playerSprite) return _playerName.text;
         if (sprite == _aiRivalSprite) return _aiRivalName.text;
         return "Unknown";
+    }
+
+    public void LoadLobbyScene()
+    {
+        SceneManager.LoadScene(LobbyScene);
     }
 }

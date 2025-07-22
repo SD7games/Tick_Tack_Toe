@@ -28,9 +28,9 @@ public class BoardController
     {
         foreach (var button in _buttons)
         {
+            button.gameObject.SetActive(true);
             button.image.sprite = _emptySprite;
             button.interactable = true;
-            button.gameObject.SetActive(true);
         }
     }
 

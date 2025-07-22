@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -12,7 +11,7 @@ public class LobbyView : MonoBehaviour
     [SerializeField]
     private ScaleAnimator _scaleAnimator;
     [SerializeField]
-    private Button _startButton;      
+    private Button _startButton;
 
     private void Start()
     {
