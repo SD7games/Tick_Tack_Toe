@@ -17,7 +17,7 @@ public class PlayerMainController : MonoBehaviour
     }
 
     private void LoadPlayerSettings()
-    {
+    {        
         if (_playerSettings == null)
         {
             Debug.Log("PlayerSettings not found in PlayerMain");

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 431f9b769ddba854bb79ae0ba70317fb, type: 3}
   m_Name: Player Settings
   m_EditorClassIdentifier: 
-  playerName: 
+  playerName: Player
   spriteName: 
   playerSprite: {fileID: 0}

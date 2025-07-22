@@ -1,23 +1,25 @@
 using System.Collections.Generic;
-using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 public class BoardController
 {
     private List<Button> _buttons;
+    private Sprite _emptySprite;
 
-    public BoardController(List<Button> buttons)
+    public BoardController(List<Button> buttons, Sprite emptySprite)
     {
         _buttons = buttons;
+        _emptySprite = emptySprite;
     }
 
-    public string[,] GetBoardState()
+    public Sprite[,] GetBoardState()
     {
-        string[,] board = new string[3, 3];
+        Sprite[,] board = new Sprite[3, 3];
         for (int i = 0; i < _buttons.Count; i++)
         {
             int row = i / 3;
             int col = i % 3;
-            board[row, col] = _buttons[i].GetComponentInChildren<TMP_Text>().text;
+            board[row, col] = _buttons[i].image.sprite;
         }
         return board;
     }
@@ -26,21 +28,20 @@ public class BoardController
     {
         foreach (var button in _buttons)
         {
-            button.GetComponentInChildren<TMP_Text>().text = "";
+            button.image.sprite = _emptySprite;
             button.interactable = true;
         }
     }
 
-    public void SetCell(int index, string symbol)
+    public void SetCell(int index, Sprite emojiSprite)
     {
-        var text = _buttons[index].GetComponentInChildren<TMP_Text>();
-        text.text = symbol;
+        _buttons[index].image.sprite = emojiSprite;
         _buttons[index].interactable = false;
     }
 
     public bool IsCellEmpty(int index)
     {
-        return string.IsNullOrEmpty(_buttons[index].GetComponentInChildren<TMP_Text>().text);
+        return _buttons[index].image.sprite == _emptySprite;
     }
 
     public void DisableAll()

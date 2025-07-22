@@ -63,6 +63,7 @@ public class PlayerLobbyController : MonoBehaviour
         {
             _playerName = PlayerPrefs.GetString(PlayerNameKey);
             _playerInputField.text = _playerName;
+            _playerSettings.playerName = _playerName;
         }
 
         if (PlayerPrefs.HasKey(PlayerSpriteKey))

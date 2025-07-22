@@ -1,61 +1,53 @@
 
+using UnityEngine;
+
 public class WinChecker
 {
-    public bool IsGameOver(string[,] board, out string winner, out BoardView.WinLineType? winType)
+    public bool IsGameOver(Sprite[,] board, out Sprite winner, out BoardView.WinLineType? winLine)
     {
         winner = null;
-        winType = null;
+        winLine = null;
 
-        for (int row = 0; row < 3; row++)
+        int[][] lines = new int[][]
         {
-            if (!string.IsNullOrEmpty(board[row, 0]) &&
-                board[row, 0] == board[row, 1] &&
-                board[row, 1] == board[row, 2])
+            new[] { 0, 1, 2 },
+            new[] { 3, 4, 5 },
+            new[] { 6, 7, 8 },
+            new[] { 0, 3, 6 },
+            new[] { 1, 4, 7 },
+            new[] { 2, 5, 8 },
+            new[] { 0, 4, 8 },
+            new[] { 2, 4, 6 }
+        };
+
+        for (int i = 0; i < lines.Length; i++)
+        {
+            int a = lines[i][0];
+            int b = lines[i][1];
+            int c = lines[i][2];
+
+            int rowA = a / 3, colA = a % 3;
+            int rowB = b / 3, colB = b % 3;
+            int rowC = c / 3, colC = c % 3;
+
+            Sprite cellA = board[rowA, colA];
+            Sprite cellB = board[rowB, colB];
+            Sprite cellC = board[rowC, colC];
+            if (cellA != null && cellA == cellB && cellB == cellC)
             {
-                winner = board[row, 0];
-                winType = (BoardView.WinLineType) row; 
+                winner = cellA;
+                winLine = (BoardView.WinLineType) i;
                 return true;
             }
         }
 
-        for (int col = 0; col < 3; col++)
+        foreach (var cell in board)
         {
-            if (!string.IsNullOrEmpty(board[0, col]) &&
-                board[0, col] == board[1, col] &&
-                board[1, col] == board[2, col])
-            {
-                winner = board[0, col];
-                winType = (BoardView.WinLineType) (3 + col);
-                return true;
-            }
+            if (cell == null) return false;
         }
 
-        if (!string.IsNullOrEmpty(board[0, 0]) &&
-            board[0, 0] == board[1, 1] &&
-            board[1, 1] == board[2, 2])
-        {
-            winner = board[0, 0];
-            winType = BoardView.WinLineType.DiagonalUpLeft;
-            return true;
-        }
-
-        if (!string.IsNullOrEmpty(board[0, 2]) &&
-            board[0, 2] == board[1, 1] &&
-            board[1, 1] == board[2, 0])
-        {
-            winner = board[0, 2];
-            winType = BoardView.WinLineType.DiagonalUpRight;
-            return true;
-        }
-
-        // Draw
-        for (int r = 0; r < 3; r++)
-            for (int c = 0; c < 3; c++)
-                if (string.IsNullOrEmpty(board[r, c]))
-                    return false; 
-
-        return true; 
-    }  
+        return true;
+    }
 }
 
 
