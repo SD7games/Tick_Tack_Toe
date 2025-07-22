@@ -30,6 +30,7 @@ public class BoardController
         {
             button.image.sprite = _emptySprite;
             button.interactable = true;
+            button.gameObject.SetActive(true);
         }
     }
 
@@ -48,7 +49,14 @@ public class BoardController
     {
         foreach (var button in _buttons)
         {
-            button.interactable = false;
+            if (button.image.sprite == _emptySprite)
+            {
+                button.gameObject.SetActive(false);
+            }
+            else
+            {
+                button.interactable = false;
+            }
         }
     }
 }

@@ -35,7 +35,6 @@ public class ContentScrollController : MonoBehaviour
             var button = buttonGO.GetComponent<Button>();
             button.onClick.AddListener(() =>
             {
-                Debug.Log("Emoji selected: " + emoji.name);
                 OnEmojiSelected?.Invoke(emoji);
             });
         }
