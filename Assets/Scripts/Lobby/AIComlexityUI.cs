@@ -26,7 +26,7 @@ public class AIComlexityUI : MonoBehaviour
 
     private Vector2 _mainPos, _opt1Pos, _opt2Pos;
 
-    private Dictionary<string, Color> _difficutlyColors = new()
+    private Dictionary<string, Color> _difficultyColors = new()
     {
         { "Easy", Color.green },
         { "Norm", Color.yellow },
@@ -99,7 +99,7 @@ public class AIComlexityUI : MonoBehaviour
     {
         _canPulse = false;
 
-        List<string> otherOptions = new(_difficutlyColors.Keys);
+        List<string> otherOptions = new(_difficultyColors.Keys);
         otherOptions.Remove(_currentDifficutly);
 
         SetupOption(_opt1Button, otherOptions[0]);
@@ -140,12 +140,12 @@ public class AIComlexityUI : MonoBehaviour
     private void SetupOption(Button button, string diff)
     {
         button.GetComponentInChildren<TMP_Text>().text = diff;
-        button.GetComponent<Image>().color = _difficutlyColors[diff];
+        button.GetComponent<Image>().color = _difficultyColors[diff];
     }
 
     private void UpdateMainButton(string diff)
     {
         _mainButton.GetComponentInChildren<TMP_Text>().text = diff;
-        _mainButton.GetComponent<Image>().color = _difficutlyColors[diff];
+        _mainButton.GetComponent<Image>().color = _difficultyColors[diff];
     }
 }
