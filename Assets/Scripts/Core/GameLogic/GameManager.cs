@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour
                     _boardView.ShowWinLine(winLine.Value);
 
                 string winnerName = GetNameBySprite(winner);
-                _uiController.ShowResult($"Player \n{winnerName} wins!");
+                _uiController.ShowResult($" \n{winnerName} wins!");
             }
             else
             {
