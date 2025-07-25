@@ -311,6 +311,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &538050214 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4780787915566158291, guid: ee58d038033107c408be7499fbd93951, type: 3}
+  m_PrefabInstance: {fileID: 8440668897319362768}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9406053e70a99454aa03a44fd50bf8a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,6 +674,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1729486720}
     - target: {fileID: 6467360593189992965, guid: 576d7d06deba7aa4ea22d6f8d788490d, type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 538050214}
+    - target: {fileID: 6467360593189992965, guid: 576d7d06deba7aa4ea22d6f8d788490d, type: 3}
       propertyPath: _playerSprite
       value: 
       objectReference: {fileID: 668342877}
@@ -768,6 +783,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5151394c9c934a745901ea04fa791d2f, type: 3}
+--- !u!114 &2396086917688603841 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8949760693500250593, guid: 5151394c9c934a745901ea04fa791d2f, type: 3}
+  m_PrefabInstance: {fileID: 2396086917688603840}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5824410273492882751
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -865,6 +891,18 @@ PrefabInstance:
       propertyPath: _uiController
       value: 
       objectReference: {fileID: 1937782713}
+    - target: {fileID: 4780787915566158291, guid: ee58d038033107c408be7499fbd93951, type: 3}
+      propertyPath: _playerSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 1fd9e837469c78c45b8e05cf2ba21179, type: 2}
+    - target: {fileID: 4780787915566158291, guid: ee58d038033107c408be7499fbd93951, type: 3}
+      propertyPath: _aiRivalSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 738fc8e85d761f446925adb32fe68b18, type: 2}
+    - target: {fileID: 4780787915566158291, guid: ee58d038033107c408be7499fbd93951, type: 3}
+      propertyPath: _sceneFaderImage
+      value: 
+      objectReference: {fileID: 2396086917688603841}
     - target: {fileID: 4780787915566158291, guid: ee58d038033107c408be7499fbd93951, type: 3}
       propertyPath: _backToLobbyButton
       value: 

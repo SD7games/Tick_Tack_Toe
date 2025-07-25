@@ -138,6 +138,7 @@ MonoBehaviour:
   _duration: 0.7
   _targetScale: 1.2
   _ease: 27
+  _loopType: 1
   _loop: 1
 --- !u!1 &2211684376373922617
 GameObject:

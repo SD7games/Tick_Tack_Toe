@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca33e2fa1a8fbc0478c733df834b2cd3, type: 3}
   m_Name: Ai Rival Settings
   m_EditorClassIdentifier: 
-  aiName: 
+  aiName: Ai Rival
   spriteName: 
-  aiSprite: {fileID: 0}
+  aiSprite: {fileID: -1352124187264379409, guid: bde90d1ce8f99e449bd6126cb0fb9496, type: 3}
   difficulty: 

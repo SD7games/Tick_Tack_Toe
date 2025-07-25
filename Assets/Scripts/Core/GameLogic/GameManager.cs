@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,17 +13,21 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private BoardView _boardView;
     [SerializeField]
-    private Image _playerImage;
-    [SerializeField]
-    private Image _aiRivalImage;
-    [SerializeField]
     private Image _emptyImage;
     [SerializeField]
     private TMP_Text _playerName;
     [SerializeField]
     private TMP_Text _aiRivalName;
     [SerializeField]
+    private PlayerSettings _playerSettings;
+    [SerializeField]
+    private AiRivalSettings _aiRivalSettings;
+    [SerializeField]
     private Button _backToLobbyButton;
+    [SerializeField]
+    private Image _sceneFaderImage;
+
+    private float _fadeDuration = 1.5f;
 
     private Sprite _playerSprite;
     private Sprite _aiRivalSprite;
@@ -39,20 +42,13 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        _playerSprite = _playerImage.sprite;
-        _aiRivalSprite = _aiRivalImage.sprite;
-        _emptySprite = _emptyImage.sprite;
-
-        _input = new InputController(_buttons);
-        _input.OnCellClicked += OnCellClicked;
-
-        _board = new BoardController(_buttons, _emptySprite);
-        _turnManager = new TurnManager(_playerSprite, _aiRivalSprite, _playerName, _aiRivalName);
-        _winChecker = new WinChecker();
+        SetSpriteReferences();
+        GetGameLogic();
+        RestartGame();
+        GetInput();
 
         _uiController.SetRestartListener(RestartGame);
         _backToLobbyButton.onClick.AddListener(() => LoadLobbyScene());
-        RestartGame();
     }
 
     private void OnDestroy()
@@ -61,12 +57,40 @@ public class GameManager : MonoBehaviour
             _input.OnCellClicked -= OnCellClicked;
     }
 
+    private void GetGameLogic()
+    {
+        _board = new BoardController(_buttons, _emptySprite);
+        _turnManager = new TurnManager(_playerSprite, _aiRivalSprite, _playerName, _aiRivalName);
+        _winChecker = new WinChecker();
+    }
+
+    private void GetInput()
+    {
+        _input = new InputController(_buttons);
+        _input.OnCellClicked += OnCellClicked;
+    }
+
+    private void SetSpriteReferences()
+    {
+        _playerSprite = _playerSettings.playerSprite;
+        _aiRivalSprite = _aiRivalSettings.aiSprite;
+        _emptySprite = _emptyImage.sprite;
+    }
+
     private void RestartGame()
     {
+        SceneFader();
         _board.Reset();
         _turnManager.Reset();
         _boardView.HideAllLines();
         _uiController.ShowCurrentPlayer(_turnManager.CurrentName());
+    }
+
+    private void SceneFader()
+    {
+        _sceneFaderImage.gameObject.SetActive(true);
+        _sceneFaderImage.canvasRenderer.SetAlpha(1f);
+        _sceneFaderImage.CrossFadeAlpha(0f, _fadeDuration, false);
     }
 
     private void OnCellClicked(int index)
@@ -99,6 +123,7 @@ public class GameManager : MonoBehaviour
             _uiController.ShowCurrentPlayer(_turnManager.CurrentName());
         }
     }
+
     private string GetNameBySprite(Sprite sprite)
     {
         if (sprite == _playerSprite) return _playerName.text;
