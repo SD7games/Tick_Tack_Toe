@@ -864,6 +864,10 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 4780787915566158291, guid: ee58d038033107c408be7499fbd93951, type: 3}
+      propertyPath: _uiView
+      value: 
+      objectReference: {fileID: 1937782713}
+    - target: {fileID: 4780787915566158291, guid: ee58d038033107c408be7499fbd93951, type: 3}
       propertyPath: _boardView
       value: 
       objectReference: {fileID: 1691740080}

@@ -11,8 +11,8 @@ public class ContentScrollController : MonoBehaviour
     [SerializeField]
     private Transform _contentParent;
 
-    public Action<Sprite> OnEmojiSelected;
-    public Action OnGenerationComplete;
+    public event Action<Sprite> OnEmojiSelected;
+    public event Action OnGenerationComplete;
 
     private void Start()
     {

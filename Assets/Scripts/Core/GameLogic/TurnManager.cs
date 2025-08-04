@@ -1,4 +1,3 @@
-
 using TMPro;
 using UnityEngine;
 
@@ -32,8 +31,17 @@ public class TurnManager
     public void NextTurn()
     {
         _isPlayerTurn = !_isPlayerTurn;
-        currentSprite = _isPlayerTurn ? _playerSprite : _aiRivalSprite;
-        currentName = _isPlayerTurn ? _playerName : _aiRivalName;
+
+        if (_isPlayerTurn)
+        {
+            currentSprite = _playerSprite;
+            currentName = _playerName;
+        }
+        else
+        {
+            currentSprite = _aiRivalSprite;
+            currentName = _aiRivalName;
+        }
     }
 
     public string CurrentName()

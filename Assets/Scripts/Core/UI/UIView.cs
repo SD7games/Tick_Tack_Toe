@@ -1,19 +1,20 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Events;
+using System;
 
-public class UIController : MonoBehaviour
+public class UIView : MonoBehaviour
 {
     [SerializeField]
     private TMP_Text _titleText;
     [SerializeField]
     private Button _restartButton;
 
-    public void SetRestartListener(UnityAction callback)
+    public event Action OnRestartClicked;
+
+    private void Awake()
     {
-        _restartButton.onClick.RemoveAllListeners();
-        _restartButton.onClick.AddListener(callback);
+        _restartButton.onClick.AddListener(() => OnRestartClicked.Invoke());
     }
 
     public void ShowCurrentPlayer(string name)

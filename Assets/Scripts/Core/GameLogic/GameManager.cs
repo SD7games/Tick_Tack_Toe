@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private List<Button> _buttons;
     [SerializeField]
-    private UIController _uiController;
+    private UIView _uiView;
     [SerializeField]
     private BoardView _boardView;
     [SerializeField]
@@ -44,17 +44,22 @@ public class GameManager : MonoBehaviour
     {
         SetSpriteReferences();
         GetGameLogic();
-        RestartGame();
         GetInput();
 
-        _uiController.SetRestartListener(RestartGame);
+        _uiView.OnRestartClicked += RestartGame;
+
         _backToLobbyButton.onClick.AddListener(() => LoadLobbyScene());
+
+        RestartGame();
     }
 
     private void OnDestroy()
     {
         if (_input != null)
             _input.OnCellClicked -= OnCellClicked;
+
+        if (_board != null)
+            _uiView.OnRestartClicked -= RestartGame;
     }
 
     private void GetGameLogic()
@@ -83,13 +88,13 @@ public class GameManager : MonoBehaviour
         _board.Reset();
         _turnManager.Reset();
         _boardView.HideAllLines();
-        _uiController.ShowCurrentPlayer(_turnManager.CurrentName());
+        _uiView.ShowCurrentPlayer(_turnManager.CurrentName());
     }
 
     private void SceneFader()
     {
-        _sceneFaderImage.gameObject.SetActive(true);
         _sceneFaderImage.canvasRenderer.SetAlpha(1f);
+        _sceneFaderImage.gameObject.SetActive(true);
         _sceneFaderImage.CrossFadeAlpha(0f, _fadeDuration, false);
     }
 
@@ -108,11 +113,11 @@ public class GameManager : MonoBehaviour
                     _boardView.ShowWinLine(winLine.Value);
 
                 string winnerName = GetNameBySprite(winner);
-                _uiController.ShowResult($" \n{winnerName} wins!");
+                _uiView.ShowResult($" \n{winnerName} wins!");
             }
             else
             {
-                _uiController.ShowResult("Draw!");
+                _uiView.ShowResult("Draw!");
             }
 
             _board.DisableAll();
@@ -120,7 +125,7 @@ public class GameManager : MonoBehaviour
         else
         {
             _turnManager.NextTurn();
-            _uiController.ShowCurrentPlayer(_turnManager.CurrentName());
+            _uiView.ShowCurrentPlayer(_turnManager.CurrentName());
         }
     }
 

@@ -60,7 +60,9 @@ public class ScrollController : MonoBehaviour
     {
         _currentTween?.Kill();
 
-        _currentTween = DOTween.To(
+        if (_currentTween != null)
+        {
+            _currentTween = DOTween.To(
             () => _scrollRect.verticalNormalizedPosition,
             x => _scrollRect.verticalNormalizedPosition = x,
             target,
@@ -68,5 +70,6 @@ public class ScrollController : MonoBehaviour
             ).SetEase(Ease.OutCubic)
             .OnUpdate(UpdateButtonState)
             .OnComplete(UpdateButtonState);
+        }
     }
 }

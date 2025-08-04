@@ -24,7 +24,7 @@ public class BoardView : MonoBehaviour
     {
         foreach (var image in _winLines)
         {
-            image?.gameObject.SetActive(false);
+            image.gameObject.SetActive(false);
         }
     }
 }
