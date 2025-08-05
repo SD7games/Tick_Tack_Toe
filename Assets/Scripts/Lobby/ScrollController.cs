@@ -42,6 +42,7 @@ public class ScrollController : MonoBehaviour
     {
         _upButton.interactable = false;
         Canvas.ForceUpdateCanvases();
+        UpdateButtonState();
     }
 
     private void ScrollUp()
@@ -60,16 +61,13 @@ public class ScrollController : MonoBehaviour
     {
         _currentTween?.Kill();
 
-        if (_currentTween != null)
-        {
-            _currentTween = DOTween.To(
-            () => _scrollRect.verticalNormalizedPosition,
-            x => _scrollRect.verticalNormalizedPosition = x,
-            target,
-            _animationDuration
-            ).SetEase(Ease.OutCubic)
-            .OnUpdate(UpdateButtonState)
-            .OnComplete(UpdateButtonState);
-        }
+        _currentTween = DOTween.To(
+        () => _scrollRect.verticalNormalizedPosition,
+        x => _scrollRect.verticalNormalizedPosition = x,
+        target,
+        _animationDuration
+        ).SetEase(Ease.OutCubic)
+        .OnUpdate(UpdateButtonState)
+        .OnComplete(UpdateButtonState);
     }
 }
