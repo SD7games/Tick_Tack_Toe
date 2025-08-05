@@ -13,8 +13,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private BoardView _boardView;
     [SerializeField]
-    private Image _emptyImage;
-    [SerializeField]
     private TMP_Text _playerName;
     [SerializeField]
     private TMP_Text _aiRivalName;
@@ -29,7 +27,7 @@ public class GameManager : MonoBehaviour
 
     private Sprite _playerSprite;
     private Sprite _aiRivalSprite;
-    private Sprite _emptySprite;
+    private Sprite _defaultSprite;
 
     private InputController _input;
     private BoardController _board;
@@ -62,7 +60,7 @@ public class GameManager : MonoBehaviour
 
     private void GetGameLogic()
     {
-        _board = new BoardController(_buttons, _emptySprite);
+        _board = new BoardController(_buttons, _defaultSprite);
         _turnManager = new TurnManager(_playerSprite, _aiRivalSprite, _playerName, _aiRivalName);
         _winChecker = new WinChecker();
     }
@@ -75,7 +73,7 @@ public class GameManager : MonoBehaviour
 
     private void SetSpriteReferences()
     {
-        _emptySprite = _emptyImage.sprite;
+        _defaultSprite = _buttons[0].GetComponent<Image>().sprite;
 
         _playerSprite = _emojiData.GetEmojiByIndex(PlayerPrefsAIManager.Player.GetEmojiIndex());
         _aiRivalSprite = _emojiData.GetEmojiByIndex(PlayerPrefsAIManager.AI.GetEmojiAIIndex());
@@ -101,25 +99,28 @@ public class GameManager : MonoBehaviour
     {
         if (!_board.IsCellEmpty(index)) return;
 
-        _board.SetCell(index, _turnManager.currentSprite);
-        Sprite[,] boardState = _board.GetBoardState();
+        CellState currentState = _turnManager.CurrentState();
+        Sprite currentSprite = _turnManager.CurrentSprite();
 
-        if (_winChecker.IsGameOver(boardState, out Sprite winner, out BoardView.WinLineType? winLine))
+        _board.SetCell(index, currentState, currentSprite);
+        CellState[,] boardState = _board.GetBoardState();
+
+        if (_winChecker.IsGameOver(boardState, out CellState winner, out BoardView.WinLineType? winLine))
         {
-            if (winner != null)
+            if (winner != CellState.Empty)
             {
                 if (winLine.HasValue)
                     _boardView.ShowWinLine(winLine.Value);
 
-                string winnerName = GetNameBySprite(winner);
-                _uiView.ShowResult($" \n{winnerName} wins!");
+                string winnerName = GetNameByState(winner);
+                _uiView.ShowResult($"\n{winnerName} wins!");
             }
             else
             {
                 _uiView.ShowResult("Draw!");
             }
 
-            _board.DisableAll();
+            _board.DisableAll(boardState);
         }
         else
         {
@@ -128,11 +129,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private string GetNameBySprite(Sprite sprite)
+    private string GetNameByState(CellState state)
     {
-        if (sprite == _playerSprite) return _playerName.text;
-        if (sprite == _aiRivalSprite) return _aiRivalName.text;
-        return "Unknown";
+        return state switch
+        {
+            CellState.Player => _playerName.text,
+            CellState.AI => _aiRivalName.text,
+            _ => "Unknown"
+        };
     }
 
     public void LoadLobbyScene()

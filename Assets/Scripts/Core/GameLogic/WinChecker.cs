@@ -1,10 +1,8 @@
-using UnityEngine;
-
 public class WinChecker
 {
-    public bool IsGameOver(Sprite[,] board, out Sprite winner, out BoardView.WinLineType? winLine)
+    public bool IsGameOver(CellState[,] board, out CellState winner, out BoardView.WinLineType? winLine)
     {
-        winner = null;
+        winner = CellState.Empty;
         winLine = null;
 
         int[][] lines = new int[][]
@@ -29,10 +27,11 @@ public class WinChecker
             int rowB = b / 3, colB = b % 3;
             int rowC = c / 3, colC = c % 3;
 
-            Sprite cellA = board[rowA, colA];
-            Sprite cellB = board[rowB, colB];
-            Sprite cellC = board[rowC, colC];
-            if (cellA != null && cellA == cellB && cellB == cellC)
+            CellState cellA = board[rowA, colA];
+            CellState cellB = board[rowB, colB];
+            CellState cellC = board[rowC, colC];
+
+            if (cellA != CellState.Empty && cellA == cellB && cellB == cellC)
             {
                 winner = cellA;
                 winLine = (BoardView.WinLineType) i;
@@ -42,11 +41,9 @@ public class WinChecker
 
         foreach (var cell in board)
         {
-            if (cell == null) return false;
+            if (cell == CellState.Empty) return false;
         }
 
         return true;
     }
 }
-
-

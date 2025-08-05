@@ -3,49 +3,43 @@ using UnityEngine;
 
 public class TurnManager
 {
-    public Sprite currentSprite;
-    public TMP_Text currentName;
-
-    private TMP_Text _playerName;
-    private TMP_Text _aiRivalName;
-    private Sprite _playerSprite;
-    private Sprite _aiRivalSprite;
     private bool _isPlayerTurn;
+    private Sprite _playerSprite;
+    private Sprite _aiSprite;
+    private TMP_Text _playerName;
+    private TMP_Text _aiName;
 
-    public TurnManager(Sprite playerSprite, Sprite aiRivalSprite, TMP_Text playerName, TMP_Text aiRivalName)
+    public TurnManager(Sprite playerSprite, Sprite aiSprite, TMP_Text playerName, TMP_Text aiName)
     {
-        _playerName = playerName;
-        _aiRivalName = aiRivalName;
         _playerSprite = playerSprite;
-        _aiRivalSprite = aiRivalSprite;
-        Reset();
+        _aiSprite = aiSprite;
+        _playerName = playerName;
+        _aiName = aiName;
+        _isPlayerTurn = true;
     }
 
     public void Reset()
     {
         _isPlayerTurn = true;
-        currentSprite = _playerSprite;
-        currentName = _playerName;
     }
 
     public void NextTurn()
     {
         _isPlayerTurn = !_isPlayerTurn;
+    }
 
-        if (_isPlayerTurn)
-        {
-            currentSprite = _playerSprite;
-            currentName = _playerName;
-        }
-        else
-        {
-            currentSprite = _aiRivalSprite;
-            currentName = _aiRivalName;
-        }
+    public Sprite CurrentSprite()
+    {
+        return _isPlayerTurn ? _playerSprite : _aiSprite;
+    }
+
+    public CellState CurrentState()
+    {
+        return _isPlayerTurn ? CellState.Player : CellState.AI;
     }
 
     public string CurrentName()
     {
-        return currentName.text;
+        return _isPlayerTurn ? _playerName.text : _aiName.text;
     }
 }

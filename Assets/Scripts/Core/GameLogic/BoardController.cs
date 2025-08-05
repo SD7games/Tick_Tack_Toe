@@ -1,67 +1,72 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 public class BoardController
 {
+    private CellState[,] _board = new CellState[3, 3];
     private List<Button> _buttons;
-    private Sprite _emptySprite;
+    private Sprite _defaultSprite;
 
-    public BoardController(List<Button> buttons, Sprite emptySprite)
+    public BoardController(List<Button> buttons, Sprite defaultSprite)
     {
         _buttons = buttons;
-        _emptySprite = emptySprite;
-    }
-
-    public Sprite[,] GetBoardState()
-    {
-        Sprite[,] board = new Sprite[3, 3];
-
-        for (int i = 0; i < _buttons.Count; i++)
-        {
-            int row = i / 3;
-            int col = i % 3;
-            board[row, col] = _buttons[i].image.sprite;
-        }
-        return board;
+        _defaultSprite = defaultSprite;
+        Reset();
     }
 
     public void Reset()
     {
-        foreach (var button in _buttons)
+        for (int r = 0; r < 3; r++)
         {
-            button.gameObject.SetActive(true);
-            button.image.sprite = _emptySprite;
-            button.interactable = true;
+            for (int c = 0; c < 3; c++)
+            {
+                _board[r, c] = CellState.Empty;
+                int index = r * 3 + c;
+                _buttons[index].image.enabled = true;
+                _buttons[index].image.sprite = _defaultSprite;
+                _buttons[index].interactable = true;
+            }
         }
     }
 
-    public void SetCell(int index, Sprite emojiSprite)
+    public CellState[,] GetBoardState()
     {
-        if (emojiSprite == null)
-        {
-            Debug.LogWarning("emojiSprite == null!");
-        }
-        _buttons[index].image.sprite = emojiSprite;
+        return _board;
+    }
+
+    public void SetCell(int index, CellState state, Sprite sprite)
+    {
+        int row = index / 3;
+        int col = index % 3;
+
+        _board[row, col] = state;
+        _buttons[index].image.sprite = sprite;
         _buttons[index].interactable = false;
     }
 
     public bool IsCellEmpty(int index)
     {
-        return _buttons[index].image.sprite == _emptySprite;
+        int row = index / 3;
+        int col = index % 3;
+        return _board[row, col] == CellState.Empty;
     }
 
-    public void DisableAll()
+    public void DisableAll(CellState[,] boardState)
     {
-        foreach (var button in _buttons)
+        for (int i = 0; i < _buttons.Count; i++)
         {
-            if (button.image.sprite == _emptySprite)
+            int row = i / 3;
+            int col = i % 3;
+
+            var button = _buttons[i];
+
+            if (boardState[row, col] == CellState.Empty)
             {
-                button.gameObject.SetActive(false);
+                button.image.enabled = false;
             }
-            else
-            {
-                button.interactable = false;
-            }
+
+            button.interactable = false;
         }
     }
 }
