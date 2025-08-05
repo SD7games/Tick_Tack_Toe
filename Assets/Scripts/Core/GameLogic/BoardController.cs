@@ -15,6 +15,7 @@ public class BoardController
     public Sprite[,] GetBoardState()
     {
         Sprite[,] board = new Sprite[3, 3];
+
         for (int i = 0; i < _buttons.Count; i++)
         {
             int row = i / 3;
@@ -36,6 +37,10 @@ public class BoardController
 
     public void SetCell(int index, Sprite emojiSprite)
     {
+        if (emojiSprite == null)
+        {
+            Debug.LogWarning("emojiSprite == null!");
+        }
         _buttons[index].image.sprite = emojiSprite;
         _buttons[index].interactable = false;
     }

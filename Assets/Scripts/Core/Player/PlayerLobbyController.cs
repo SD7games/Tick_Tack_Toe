@@ -5,8 +5,6 @@ using UnityEngine.UI;
 public class PlayerLobbyController : MonoBehaviour
 {
     [SerializeField]
-    private string _playerName;
-    [SerializeField]
     private Image _playerSign;
     [SerializeField]
     private TMP_InputField _playerInputField;
@@ -14,11 +12,6 @@ public class PlayerLobbyController : MonoBehaviour
     private EmojiData _emojiData;
     [SerializeField]
     private ContentScrollController _contentScrollController;
-    [SerializeField]
-    private PlayerSettings _playerSettings;
-
-    private const string PlayerNameKey = "PlayerName";
-    private const string PlayerSpriteKey = "PlayerSprite";
 
     private void Start()
     {
@@ -33,55 +26,36 @@ public class PlayerLobbyController : MonoBehaviour
         _contentScrollController.OnEmojiSelected -= SetPlayerSprite;
     }
 
-    public void SetPlayerSprite(Sprite sprite)
-    {
-        _playerSign.sprite = sprite;
-
-        _playerSettings.playerSprite = sprite;
-        _playerSettings.spriteName = sprite.name;
-
-        SavePlayerSprite(sprite);
-    }
-
     private void SetName(string name)
     {
-        _playerName = name;
-        _playerSettings.playerName = _playerName;
-        PlayerPrefs.SetString(PlayerNameKey, _playerName);
+        PlayerPrefsAIManager.Player.SetName(name);
         PlayerPrefs.Save();
     }
 
-    private void SavePlayerSprite(Sprite sprite)
+    public void SetPlayerSprite(Sprite sprite)
     {
-        PlayerPrefs.SetString(PlayerSpriteKey, sprite.name);
-        PlayerPrefs.Save();
+        int index = _emojiData._emojiSprites.IndexOf(sprite);
+
+        if (index >= 0)
+        {
+            _playerSign.sprite = sprite;
+            PlayerPrefsAIManager.Player.SetEmojiIndex(index);
+            PlayerPrefsAIManager.Save();
+        }
     }
 
     private void LoadPlayerData()
     {
-        if (PlayerPrefs.HasKey(PlayerNameKey))
+        _playerInputField.text = PlayerPrefsAIManager.Player.GetName();
+
+        int index = PlayerPrefsAIManager.Player.GetEmojiIndex();
+        if (index >= 0 && index < _emojiData._emojiSprites.Count)
         {
-            _playerName = PlayerPrefs.GetString(PlayerNameKey);
-            _playerInputField.text = _playerName;
-            _playerSettings.playerName = _playerName;
+            _playerSign.sprite = _emojiData._emojiSprites[index];
         }
-
-        if (PlayerPrefs.HasKey(PlayerSpriteKey))
+        else
         {
-            string spriteName = PlayerPrefs.GetString(PlayerSpriteKey);
-            Sprite foundSprite = _emojiData._emojiSprites.Find(sprite => sprite.name == spriteName);
-
-            if (foundSprite != null)
-            {
-                _playerSign.sprite = foundSprite;
-
-                _playerSettings.playerSprite = foundSprite;
-                _playerSettings.spriteName = spriteName;
-            }
-            else
-            {
-                Debug.LogWarning("Emoji not found: " + spriteName);
-            }
+            Debug.Log("Invalid player index" + index);
         }
     }
 }

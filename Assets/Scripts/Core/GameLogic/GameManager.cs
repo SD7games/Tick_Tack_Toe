@@ -19,13 +19,11 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private TMP_Text _aiRivalName;
     [SerializeField]
-    private PlayerSettings _playerSettings;
-    [SerializeField]
-    private AiRivalSettings _aiRivalSettings;
-    [SerializeField]
     private Button _backToLobbyButton;
     [SerializeField]
     private Image _sceneFaderImage;
+    [SerializeField]
+    private EmojiData _emojiData;
 
     private float _fadeDuration = 1.5f;
 
@@ -77,9 +75,13 @@ public class GameManager : MonoBehaviour
 
     private void SetSpriteReferences()
     {
-        _playerSprite = _playerSettings.playerSprite;
-        _aiRivalSprite = _aiRivalSettings.aiSprite;
         _emptySprite = _emptyImage.sprite;
+
+        int playerIndex = PlayerPrefsAIManager.Player.GetEmojiIndex();
+        int aiIndex = PlayerPrefsAIManager.AI.GetEmojiAIIndex();
+
+        _playerSprite = _emojiData.GetEmojiByIndex(playerIndex);
+        _aiRivalSprite = _emojiData.GetEmojiByIndex(aiIndex);
     }
 
     private void RestartGame()

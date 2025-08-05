@@ -5,33 +5,30 @@ using UnityEngine.UI;
 public class PlayerMainController : MonoBehaviour
 {
     [SerializeField]
-    private PlayerSettings _playerSettings;
-    [SerializeField]
     private TMP_Text _playerName;
     [SerializeField]
     private Image _playerSprite;
+    [SerializeField]
+    private EmojiData _emojiData;
 
     private void Start()
     {
-        LoadPlayerSettings();
+        LoadPlayerData();
     }
 
-    private void LoadPlayerSettings()
+    private void LoadPlayerData()
     {
-        if (_playerSettings == null)
-        {
-            Debug.Log("PlayerSettings not found in PlayerMain");
-            return;
-        }
+        _playerName.text = PlayerPrefsAIManager.Player.GetName();
 
-        if (_playerName != null)
-        {
-            _playerName.text = _playerSettings.playerName;
-        }
+        int index = PlayerPrefsAIManager.Player.GetEmojiIndex();
 
-        if (_playerSprite != null && _playerSettings.playerSprite != null)
+        if (index >= 0 && index < _emojiData._emojiSprites.Count)
         {
-            _playerSprite.sprite = _playerSettings.playerSprite;
+            _playerSprite.sprite = _emojiData._emojiSprites[index];
+        }
+        else
+        {
+            Debug.Log("invalid player emoji index" + index);
         }
     }
 }

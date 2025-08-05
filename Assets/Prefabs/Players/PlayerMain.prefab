@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a0469ea42c207b4fa98f0b8dde48fdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerSettings: {fileID: 11400000, guid: 1fd9e837469c78c45b8e05cf2ba21179, type: 2}
   _playerName: {fileID: 0}
   _playerSprite: {fileID: 0}
+  _emojiData: {fileID: 11400000, guid: 6b6c84d126464c040bbed916feba2efe, type: 2}
