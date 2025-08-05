@@ -77,11 +77,8 @@ public class GameManager : MonoBehaviour
     {
         _emptySprite = _emptyImage.sprite;
 
-        int playerIndex = PlayerPrefsAIManager.Player.GetEmojiIndex();
-        int aiIndex = PlayerPrefsAIManager.AI.GetEmojiAIIndex();
-
-        _playerSprite = _emojiData.GetEmojiByIndex(playerIndex);
-        _aiRivalSprite = _emojiData.GetEmojiByIndex(aiIndex);
+        _playerSprite = _emojiData.GetEmojiByIndex(PlayerPrefsAIManager.Player.GetEmojiIndex());
+        _aiRivalSprite = _emojiData.GetEmojiByIndex(PlayerPrefsAIManager.AI.GetEmojiAIIndex());
     }
 
     private void RestartGame()
