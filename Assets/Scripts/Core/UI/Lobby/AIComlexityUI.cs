@@ -47,7 +47,7 @@ public class AIComlexityUI : MonoBehaviour
         _opt1Pos = _opt1RT.anchoredPosition;
         _opt2Pos = _opt2RT.anchoredPosition;
 
-        _currentDifficutly = PlayerPrefs.GetString("Difficutly", "Easy");
+        _currentDifficutly = PlayerPrefsAIManager.AI.GetStrategy();
         StartCoroutine(PulseRoutine());
         UpdateMainButton(_currentDifficutly);
         HideOptionsInstant();
@@ -91,8 +91,8 @@ public class AIComlexityUI : MonoBehaviour
         string newDiff = selectedButton.GetComponentInChildren<TMP_Text>().text;
 
         _currentDifficutly = newDiff;
-        PlayerPrefs.SetString("Difficutly", _currentDifficutly);
-        PlayerPrefs.Save();
+        PlayerPrefsAIManager.AI.SetStrategy(_currentDifficutly);
+        PlayerPrefsAIManager.Save();
 
         UpdateMainButton(_currentDifficutly);
         HideOptionsInstant();
