@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -37,6 +38,8 @@ public class AIComlexityUI : MonoBehaviour
 
     private bool _optionsVisible = false;
     private bool _canPulse = true;
+
+    public event Action<string> OnDifficultyChanged;
 
     private void Start()
     {
@@ -93,6 +96,8 @@ public class AIComlexityUI : MonoBehaviour
 
         UpdateMainButton(_currentDifficutly);
         HideOptionsInstant();
+
+        OnDifficultyChanged?.Invoke(_currentDifficutly);
     }
 
     private void ShowOptions()

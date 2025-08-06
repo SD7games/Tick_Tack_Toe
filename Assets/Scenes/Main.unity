@@ -825,6 +825,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 149ca28b4a5b40047aaf62c92f4d6c50, type: 3}
+--- !u!114 &5824410273492882752 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4904330914025542641, guid: 149ca28b4a5b40047aaf62c92f4d6c50, type: 3}
+  m_PrefabInstance: {fileID: 5824410273492882751}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3995f0f13f1054e46af978a273d06b10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8440668897319362768
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -885,6 +896,10 @@ PrefabInstance:
       propertyPath: _sceneFaderImage
       value: 
       objectReference: {fileID: 2396086917688603841}
+    - target: {fileID: 4780787915566158291, guid: ee58d038033107c408be7499fbd93951, type: 3}
+      propertyPath: _aiRivalController
+      value: 
+      objectReference: {fileID: 5824410273492882752}
     - target: {fileID: 4780787915566158291, guid: ee58d038033107c408be7499fbd93951, type: 3}
       propertyPath: _backToLobbyButton
       value: 

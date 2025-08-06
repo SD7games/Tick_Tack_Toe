@@ -24,6 +24,7 @@ public class ScrollController : MonoBehaviour
         _contentScrollController.OnGenerationComplete += UpdateCanvasForce;
         _upButton.onClick.AddListener(() => ScrollUp());
         _downButton.onClick.AddListener(() => ScrollDown());
+        UpdateCanvasForce();
     }
 
     private void OnDestroy()
@@ -42,7 +43,6 @@ public class ScrollController : MonoBehaviour
     {
         _upButton.interactable = false;
         Canvas.ForceUpdateCanvases();
-        UpdateButtonState();
     }
 
     private void ScrollUp()

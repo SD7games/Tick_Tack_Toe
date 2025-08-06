@@ -20,6 +20,10 @@ public static class PlayerPrefsAIManager
 
         public static void SetEmojiAIIndex(int index) => PlayerPrefs.SetInt("AIEmojiIndex", index);
         public static int GetEmojiAIIndex() => PlayerPrefs.GetInt("AIEmojiIndex", 1);
+
+        public static void SetStrategy(string strategy) => PlayerPrefs.SetString("AIStrategy", strategy);
+        public static string GetStrategy() => PlayerPrefs.GetString("AIStrategy", "Easy");
+
     }
 
     public static void Save() => PlayerPrefs.Save();

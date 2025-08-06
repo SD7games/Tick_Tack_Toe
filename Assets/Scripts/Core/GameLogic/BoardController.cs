@@ -68,4 +68,26 @@ public class BoardController
             button.interactable = false;
         }
     }
+
+    public int[] GetBoardAsIntArray()
+    {
+        var result = new int[9];
+        var state = GetBoardState();
+
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                int index = i * 3 + j;
+                result[index] = state[i, j] switch
+                {
+                    CellState.Player => 1,
+                    CellState.AI => 2,
+                    _ => 0
+                };
+            }
+        }
+
+        return result;
+    }
 }

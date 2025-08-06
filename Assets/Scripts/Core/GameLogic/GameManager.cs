@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     private Image _sceneFaderImage;
     [SerializeField]
     private EmojiData _emojiData;
+    [SerializeField]
+    private AIRivalController _aiRivalController;
 
     private float _fadeDuration = 1.5f;
 
@@ -41,6 +43,8 @@ public class GameManager : MonoBehaviour
         SetSpriteReferences();
         GetGameLogic();
         GetInput();
+
+        _aiRivalController.Initialize(_input, _board);
 
         _uiView.OnRestartClicked += RestartGame;
 
@@ -126,6 +130,11 @@ public class GameManager : MonoBehaviour
         {
             _turnManager.NextTurn();
             _uiView.ShowCurrentPlayer(_turnManager.CurrentName());
+
+            if (_turnManager.CurrentState() == CellState.AI)
+            {
+                _aiRivalController.MakeMove();
+            }
         }
     }
 
