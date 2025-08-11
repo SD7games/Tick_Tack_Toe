@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,6 +13,8 @@ public class PlayerLobbyController : MonoBehaviour
     private EmojiData _emojiData;
     [SerializeField]
     private ContentScrollController _contentScrollController;
+
+    public event Action OnCheckMatchAISign;
 
     private void Start()
     {
@@ -41,6 +44,7 @@ public class PlayerLobbyController : MonoBehaviour
             _playerSign.sprite = sprite;
             PlayerPrefsAIManager.Player.SetEmojiIndex(index);
             PlayerPrefsAIManager.Save();
+            OnCheckMatchAISign.Invoke();
         }
     }
 

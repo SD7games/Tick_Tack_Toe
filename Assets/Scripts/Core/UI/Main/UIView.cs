@@ -9,10 +9,11 @@ public class UIView : MonoBehaviour
     private TMP_Text _titleText;
     [SerializeField]
     private Button _restartButton;
+    [SerializeField]
 
     public event Action OnRestartClicked;
 
-    private void Awake()
+    private void Start()
     {
         _restartButton.onClick.AddListener(() => OnRestartClicked.Invoke());
     }

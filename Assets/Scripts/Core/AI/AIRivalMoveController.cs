@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class AIRivalController : MonoBehaviour
+public class AIRivalMoveController : MonoBehaviour
 {
     private IAIStrategy _strategy;
     private InputController _input;
@@ -44,7 +44,7 @@ public class AIRivalController : MonoBehaviour
     {
         _input.BlockInput();
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.8f);
 
         int[] boardState = _board.GetBoardAsIntArray();
         int moveIndex = _strategy.GetMove(boardState);
@@ -52,8 +52,7 @@ public class AIRivalController : MonoBehaviour
         if (moveIndex >= 0)
         {
             _input.SimulateClick(moveIndex);
-
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.2f);
         }
 
         _input.AllowInput();

@@ -428,6 +428,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1158199393 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7679182035855187733, guid: 5151394c9c934a745901ea04fa791d2f, type: 3}
+  m_PrefabInstance: {fileID: 2396086917688603840}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1158199395 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 494332265064866242, guid: 5151394c9c934a745901ea04fa791d2f, type: 3}
+  m_PrefabInstance: {fileID: 2396086917688603840}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158199393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1158199397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158199393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16e1fb0464e48c148b24e03c2b117023, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 0.8
+  _targetScale: 1.2
+  _ease: 27
+  _loopType: 1
+  _loop: 1
+  _targetImage: {fileID: 1158199395}
 --- !u!114 &1196247958 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4621292786327336730, guid: 5151394c9c934a745901ea04fa791d2f, type: 3}
@@ -755,7 +789,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7679182035855187733, guid: 5151394c9c934a745901ea04fa791d2f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1158199397}
   m_SourcePrefab: {fileID: 100100000, guid: 5151394c9c934a745901ea04fa791d2f, type: 3}
 --- !u!114 &2396086917688603841 stripped
 MonoBehaviour:
@@ -820,6 +857,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AIRivalMain
       objectReference: {fileID: 0}
+    - target: {fileID: 5325643687769230042, guid: 149ca28b4a5b40047aaf62c92f4d6c50, type: 3}
+      propertyPath: _aiSign
+      value: 
+      objectReference: {fileID: 1477723036}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -827,7 +868,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 149ca28b4a5b40047aaf62c92f4d6c50, type: 3}
 --- !u!114 &5824410273492882752 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4904330914025542641, guid: 149ca28b4a5b40047aaf62c92f4d6c50, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1928849966866063009, guid: 149ca28b4a5b40047aaf62c92f4d6c50, type: 3}
   m_PrefabInstance: {fileID: 5824410273492882751}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -857,14 +898,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1691740080}
     - target: {fileID: 4780787915566158291, guid: ee58d038033107c408be7499fbd93951, type: 3}
-      propertyPath: _emojiData
-      value: 
-      objectReference: {fileID: 11400000, guid: 6b6c84d126464c040bbed916feba2efe, type: 2}
-    - target: {fileID: 4780787915566158291, guid: ee58d038033107c408be7499fbd93951, type: 3}
-      propertyPath: _emptyImage
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4780787915566158291, guid: ee58d038033107c408be7499fbd93951, type: 3}
       propertyPath: _playerName
       value: 
       objectReference: {fileID: 1729486720}
@@ -873,25 +906,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 890918218}
     - target: {fileID: 4780787915566158291, guid: ee58d038033107c408be7499fbd93951, type: 3}
-      propertyPath: _playerImage
+      propertyPath: _scaleAnimator
       value: 
-      objectReference: {fileID: 668342877}
-    - target: {fileID: 4780787915566158291, guid: ee58d038033107c408be7499fbd93951, type: 3}
-      propertyPath: _aiRivalImage
-      value: 
-      objectReference: {fileID: 1477723036}
-    - target: {fileID: 4780787915566158291, guid: ee58d038033107c408be7499fbd93951, type: 3}
-      propertyPath: _uiController
-      value: 
-      objectReference: {fileID: 1937782713}
-    - target: {fileID: 4780787915566158291, guid: ee58d038033107c408be7499fbd93951, type: 3}
-      propertyPath: _playerSettings
-      value: 
-      objectReference: {fileID: 11400000, guid: 1fd9e837469c78c45b8e05cf2ba21179, type: 2}
-    - target: {fileID: 4780787915566158291, guid: ee58d038033107c408be7499fbd93951, type: 3}
-      propertyPath: _aiRivalSettings
-      value: 
-      objectReference: {fileID: 11400000, guid: 738fc8e85d761f446925adb32fe68b18, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 4780787915566158291, guid: ee58d038033107c408be7499fbd93951, type: 3}
       propertyPath: _sceneFaderImage
       value: 

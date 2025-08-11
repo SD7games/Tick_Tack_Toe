@@ -7,10 +7,6 @@ public class LobbyView : MonoBehaviour
     private const string MainSceneTag = "Main";
 
     [SerializeField]
-    private Image _targetImage;
-    [SerializeField]
-    private ScaleAnimator _scaleAnimator;
-    [SerializeField]
     private Button _startButton;
     [SerializeField]
     private Image _sceneFaderImage;
@@ -20,7 +16,6 @@ public class LobbyView : MonoBehaviour
     private void Start()
     {
         SceneFader();
-        _scaleAnimator.Animate(_targetImage);
         _startButton.onClick.AddListener(() => LoadMainScene());
     }
 
@@ -34,10 +29,5 @@ public class LobbyView : MonoBehaviour
     private void LoadMainScene()
     {
         SceneManager.LoadScene(MainSceneTag);
-    }
-
-    private void OnDestroy()
-    {
-        _scaleAnimator.DoKillAnimate();
     }
 }

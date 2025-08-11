@@ -54,11 +54,12 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  _uiController: {fileID: 0}
+  _uiView: {fileID: 0}
   _boardView: {fileID: 0}
-  _playerImage: {fileID: 0}
-  _aiRivalImage: {fileID: 0}
-  _emptyImage: {fileID: 0}
   _playerName: {fileID: 0}
   _aiRivalName: {fileID: 0}
   _backToLobbyButton: {fileID: 0}
+  _sceneFaderImage: {fileID: 0}
+  _emojiData: {fileID: 11400000, guid: 6b6c84d126464c040bbed916feba2efe, type: 2}
+  _aiRivalController: {fileID: 0}
+  _scaleAnimator: {fileID: 0}

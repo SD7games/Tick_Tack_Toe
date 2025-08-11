@@ -14,26 +14,30 @@ public class ScaleAnimator : MonoBehaviour
     private LoopType _loopType = LoopType.Yoyo;
     [SerializeField]
     private bool _loop = false;
+    [SerializeField]
+    private Image _targetImage;
 
     private Vector3 _originalScale;
-
-    private Image _targetImage;
 
     private void Awake()
     {
         _originalScale = transform.localScale;
     }
 
-    public void Animate(Image targetImage)
+    private void Start()
     {
-        _targetImage = targetImage;
+        Animate();
+    }
+
+    private void OnDestroy()
+    {
+        _targetImage.transform.DOKill();
+    }
+
+    public void Animate()
+    {
         _targetImage.transform.DOScale(_originalScale * _targetScale, _duration)
             .SetEase(_ease)
             .SetLoops(_loop ? -1 : 0, _loopType);
-    }
-
-    public void DoKillAnimate()
-    {
-        _targetImage.transform.DOKill();
     }
 }

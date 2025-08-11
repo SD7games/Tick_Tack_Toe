@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private EmojiData _emojiData;
     [SerializeField]
-    private AIRivalController _aiRivalController;
+    private AIRivalMoveController _aiRivalController;
 
     private float _fadeDuration = 1.5f;
 
@@ -85,6 +85,8 @@ public class GameManager : MonoBehaviour
 
     private void RestartGame()
     {
+        _aiRivalController.StopAllCoroutines();
+        _input.AllowInput();
         SceneFader();
         _board.Reset();
         _turnManager.Reset();
@@ -150,6 +152,8 @@ public class GameManager : MonoBehaviour
 
     public void LoadLobbyScene()
     {
+        _aiRivalController.StopAllCoroutines();
+        _input.AllowInput();
         SceneManager.LoadScene(LobbyScene);
     }
 }
