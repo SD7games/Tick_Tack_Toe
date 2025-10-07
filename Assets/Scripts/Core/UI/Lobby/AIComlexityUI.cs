@@ -8,14 +8,24 @@ using UnityEngine.UI;
 
 public class AIComlexityUI : MonoBehaviour
 {
-    [SerializeField] private Button _mainButton;
-    [SerializeField] private Button _opt1Button;
-    [SerializeField] private Button _opt2Button;
-    [SerializeField] private CanvasGroup _opt1CanvasGroup;
-    [SerializeField] private CanvasGroup _opt2CanvasGroup;
-    [SerializeField] private RectTransform _mainRT;
-    [SerializeField] private RectTransform _opt1RT;
-    [SerializeField] private RectTransform _opt2RT;
+    [SerializeField]
+    private Button _mainButton;
+    [SerializeField]
+    private Button _opt1Button;
+    [SerializeField]
+    private Button _opt2Button;
+    [SerializeField]
+    private CanvasGroup _opt1CanvasGroup;
+    [SerializeField]
+    private CanvasGroup _opt2CanvasGroup;
+    [SerializeField]
+    private RectTransform _mainRT;
+    [SerializeField]
+    private RectTransform _opt1RT;
+    [SerializeField]
+    private RectTransform _opt2RT;
+
+    private Vector2 _mainPos, _opt1Pos, _opt2Pos;
 
     private Dictionary<string, Color> _difficultyColors = new()
     {
@@ -24,7 +34,8 @@ public class AIComlexityUI : MonoBehaviour
         { "Hard", Color.red }
     };
 
-    private string _currentDifficulty;
+    private string _currentDifficutly;
+
     private bool _optionsVisible = false;
     private bool _canPulse = true;
 
@@ -32,9 +43,13 @@ public class AIComlexityUI : MonoBehaviour
 
     private void Start()
     {
-        _currentDifficulty = PlayerPrefsAIManager.AI.GetStrategy();
+        _mainPos = _mainRT.anchoredPosition;
+        _opt1Pos = _opt1RT.anchoredPosition;
+        _opt2Pos = _opt2RT.anchoredPosition;
+
+        _currentDifficutly = PlayerPrefsAIManager.AI.GetStrategy();
         StartCoroutine(PulseRoutine());
-        UpdateMainButton(_currentDifficulty);
+        UpdateMainButton(_currentDifficutly);
         HideOptionsInstant();
 
         _mainButton.onClick.AddListener(ToggleOptions);
@@ -42,27 +57,27 @@ public class AIComlexityUI : MonoBehaviour
         _opt2Button.onClick.AddListener(() => OnSelect(_opt2Button));
     }
 
-    #region Button Animations
     private IEnumerator PulseRoutine()
     {
         while (true)
         {
             yield return new WaitForSeconds(4f);
+
             if (_canPulse)
-                PulseMainButton();
+            {
+                _mainRT.DOKill();
+                _mainRT.localScale = Vector3.one;
+
+                _mainRT.DOScale(1.2f, 0.2f)
+                    .SetEase(Ease.InOutSine)
+                    .OnComplete(() =>
+                    {
+                        _mainRT.DOScale(1f, 0.2f).SetEase(Ease.InSine);
+                    });
+            }
         }
     }
 
-    private void PulseMainButton()
-    {
-        _mainRT.DOKill();
-        _mainRT.localScale = Vector3.one;
-        _mainRT.DOScale(1.2f, 0.2f).SetEase(Ease.InOutSine)
-               .OnComplete(() => _mainRT.DOScale(1f, 0.2f).SetEase(Ease.InSine));
-    }
-    #endregion
-
-    #region Options Logic
     private void ToggleOptions()
     {
         if (_optionsVisible)
@@ -71,59 +86,66 @@ public class AIComlexityUI : MonoBehaviour
             ShowOptions();
     }
 
+    private void OnSelect(Button selectedButton)
+    {
+        string newDiff = selectedButton.GetComponentInChildren<TMP_Text>().text;
+
+        _currentDifficutly = newDiff;
+        PlayerPrefsAIManager.AI.SetStrategy(_currentDifficutly);
+        PlayerPrefsAIManager.Save();
+
+        UpdateMainButton(_currentDifficutly);
+        HideOptionsInstant();
+
+        OnDifficultyChanged?.Invoke(_currentDifficutly);
+    }
+
     private void ShowOptions()
     {
         _canPulse = false;
 
         List<string> otherOptions = new(_difficultyColors.Keys);
-        otherOptions.Remove(_currentDifficulty);
+        otherOptions.Remove(_currentDifficutly);
 
-        SetupOption(_opt1Button, otherOptions[0], _opt1CanvasGroup, _opt1RT);
-        SetupOption(_opt2Button, otherOptions[1], _opt2CanvasGroup, _opt2RT);
+        SetupOption(_opt1Button, otherOptions[0]);
+        SetupOption(_opt2Button, otherOptions[1]);
+
+        _opt1RT.anchoredPosition = _opt1Pos;
+        _opt2RT.anchoredPosition = _opt2Pos;
+
+        _opt1CanvasGroup.alpha = 1f;
+        _opt2CanvasGroup.alpha = 1f;
+
+        _opt1CanvasGroup.interactable = true;
+        _opt2CanvasGroup.interactable = true;
+        _opt1CanvasGroup.blocksRaycasts = true;
+        _opt2CanvasGroup.blocksRaycasts = true;
 
         _optionsVisible = true;
     }
 
     private void HideOptionsInstant()
     {
-        ResetOption(_opt1CanvasGroup, _opt1RT);
-        ResetOption(_opt2CanvasGroup, _opt2RT);
+        _opt1CanvasGroup.alpha = 0f;
+        _opt2CanvasGroup.alpha = 0f;
+
+        _opt1CanvasGroup.interactable = false;
+        _opt2CanvasGroup.interactable = false;
+
+        _opt1CanvasGroup.blocksRaycasts = false;
+        _opt2CanvasGroup.blocksRaycasts = false;
+
+        _opt1RT.anchoredPosition = _opt1Pos;
+        _opt2RT.anchoredPosition = _opt2Pos;
 
         _optionsVisible = false;
         _canPulse = true;
     }
 
-    private void SetupOption(Button button, string diff, CanvasGroup cg, RectTransform rt)
+    private void SetupOption(Button button, string diff)
     {
         button.GetComponentInChildren<TMP_Text>().text = diff;
         button.GetComponent<Image>().color = _difficultyColors[diff];
-
-        cg.alpha = 1f;
-        cg.interactable = true;
-        cg.blocksRaycasts = true;
-        rt.anchoredPosition = rt.anchoredPosition;
-    }
-
-    private void ResetOption(CanvasGroup cg, RectTransform rt)
-    {
-        cg.alpha = 0f;
-        cg.interactable = false;
-        cg.blocksRaycasts = false;
-        rt.anchoredPosition = rt.anchoredPosition;
-    }
-
-    private void OnSelect(Button selectedButton)
-    {
-        string newDiff = selectedButton.GetComponentInChildren<TMP_Text>().text;
-        _currentDifficulty = newDiff;
-
-        PlayerPrefsAIManager.AI.SetStrategy(_currentDifficulty);
-        PlayerPrefsAIManager.Save();
-
-        UpdateMainButton(_currentDifficulty);
-        HideOptionsInstant();
-
-        OnDifficultyChanged?.Invoke(_currentDifficulty);
     }
 
     private void UpdateMainButton(string diff)
@@ -131,5 +153,4 @@ public class AIComlexityUI : MonoBehaviour
         _mainButton.GetComponentInChildren<TMP_Text>().text = diff;
         _mainButton.GetComponent<Image>().color = _difficultyColors[diff];
     }
-    #endregion
 }

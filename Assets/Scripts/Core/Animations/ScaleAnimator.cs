@@ -31,17 +31,13 @@ public class ScaleAnimator : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (_targetImage != null && _targetImage.transform != null)
-        {
-            _targetImage.transform.DOKill();
-        }
+        _targetImage.transform.DOKill();
     }
 
     public void Animate()
     {
         _targetImage.transform.DOScale(_originalScale * _targetScale, _duration)
             .SetEase(_ease)
-            .SetLoops(_loop ? -1 : 0, _loopType)
-            .SetAutoKill(true);
+            .SetLoops(_loop ? -1 : 0, _loopType);
     }
 }
