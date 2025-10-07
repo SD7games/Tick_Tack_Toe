@@ -1,4 +1,4 @@
 public interface IAIStrategy
 {
-    int GetMove(int[] board);
+    int TryGetMove(int[] board);
 }

@@ -47,7 +47,7 @@ public class AIRivalMoveController : MonoBehaviour
         yield return new WaitForSeconds(0.8f);
 
         int[] boardState = _board.GetBoardAsIntArray();
-        int moveIndex = _strategy.GetMove(boardState);
+        int moveIndex = _strategy.TryGetMove(boardState);
 
         if (moveIndex >= 0)
         {
