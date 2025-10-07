@@ -22,6 +22,7 @@ public class ScrollController : MonoBehaviour
     private void Start()
     {
         _contentScrollController.OnGenerationComplete += UpdateCanvasForce;
+        _scrollRect.onValueChanged.AddListener(_ => UpdateButtonState());
         _upButton.onClick.AddListener(() => ScrollUp());
         _downButton.onClick.AddListener(() => ScrollDown());
         UpdateCanvasForce();
