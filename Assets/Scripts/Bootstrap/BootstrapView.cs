@@ -23,7 +23,8 @@ public class BootstrapView : MonoBehaviour
             _currentProgress = x;
             _slider.value = x / 100f;
             _progressText.text = $"{x}%";
-        }, progress, (progress - _currentProgress) * 0.02f).SetEase(Ease.Linear);
+        }, progress, (progress - _currentProgress) * 0.02f).SetEase(Ease.Linear)
+        .SetAutoKill(true);
     }
 }
 
