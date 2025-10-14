@@ -1,62 +1,55 @@
-using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class HardStrategy : IAIStrategy
 {
     public int TryGetMove(int[] board)
     {
-        int bestScore = int.MinValue;
-        int move = -1;
+        List<int> available = GameLogicHelper.GetAvailableMoves(board);
+        if (available.Count == 0)
+            return -1;
 
-        foreach (int i in GameLogicHelper.GetAvailableMoves(board))
+        // Always try to win 
+        int move = GameLogicHelper.FindWinningMove(board, 2);
+        if (move >= 0)
+            return move;
+
+        // Almost always block the player 90%
+        if (Random.value < 0.9f)
         {
-            board[i] = 2; 
-            int score = Minimax(board, 0, false);
-            board[i] = 0;
-
-            if (score > bestScore)
-            {
-                bestScore = score;
-                move = i;
-            }
+            move = GameLogicHelper.FindWinningMove(board, 1);
+            if (move >= 0)
+                return move;
         }
 
-        return move;
-    }
+        // Center has priority 80%
+        if (board[4] == 0 && Random.value < 0.8f)
+            return 4;
 
-    private int Minimax(int[] board, int depth, bool isMaximizing)
-    {
-        var board2D = GameLogicHelper.To2DBoard(board);
-        if (GameLogicHelper.CheckWinner(board2D, out CellState winner, out _))
+        // Look for best strategic corner 70%
+        int[] corners = { 0, 2, 6, 8 };
+        List<int> freeCorners = new List<int>();
+        foreach (int i in corners)
+            if (board[i] == 0)
+                freeCorners.Add(i);
+
+        if (freeCorners.Count > 0 && Random.value < 0.7f)
+            return freeCorners[Random.Range(0, freeCorners.Count)];
+
+        // Try to take a side near the center if it's occupied (smart move)
+        if (board[4] != 0)
         {
-            return winner switch
-            {
-                CellState.AI => 10 - depth,
-                CellState.Player => depth - 10,
-                _ => 0 
-            };
+            int[] sides = { 1, 3, 5, 7 };
+            List<int> goodSides = new List<int>();
+            foreach (int i in sides)
+                if (board[i] == 0)
+                    goodSides.Add(i);
+
+            if (goodSides.Count > 0 && Random.value < 0.6f)
+                return goodSides[Random.Range(0, goodSides.Count)];
         }
 
-        if (isMaximizing)
-        {
-            int best = int.MinValue;
-            foreach (int i in GameLogicHelper.GetAvailableMoves(board))
-            {
-                board[i] = 2;
-                best = Math.Max(best, Minimax(board, depth + 1, false));
-                board[i] = 0;
-            }
-            return best;
-        }
-        else
-        {
-            int best = int.MaxValue;
-            foreach (int i in GameLogicHelper.GetAvailableMoves(board))
-            {
-                board[i] = 1;
-                best = Math.Min(best, Minimax(board, depth + 1, true));
-                board[i] = 0;
-            }
-            return best;
-        }
+        // Otherwise, make a random move
+        return available[Random.Range(0, available.Count)];
     }
 }

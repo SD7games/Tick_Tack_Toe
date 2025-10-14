@@ -44,7 +44,7 @@ public class AIRivalMoveController : MonoBehaviour
     {
         _input.BlockInput();
 
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.1f);
 
         int[] boardState = _board.GetBoardAsIntArray();
         int moveIndex = _strategy.TryGetMove(boardState);
@@ -52,7 +52,7 @@ public class AIRivalMoveController : MonoBehaviour
         if (moveIndex >= 0)
         {
             _input.SimulateClick(moveIndex);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.1f);
         }
 
         _input.AllowInput();

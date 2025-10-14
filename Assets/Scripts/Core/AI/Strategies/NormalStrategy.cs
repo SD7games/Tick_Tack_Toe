@@ -6,28 +6,40 @@ public class NormalStrategy : IAIStrategy
     public int TryGetMove(int[] board)
     {
         List<int> available = GameLogicHelper.GetAvailableMoves(board);
-        if (available.Count == 0) return -1;
+        if (available.Count == 0)
+            return -1;
 
-        // Try to win
-        int move = GameLogicHelper.FindWinningMove(board, 2);
-        if (move >= 0) return move;
+        //  Try to win 90%
+        if (Random.value < 0.9f)
+        {
+            int winMove = GameLogicHelper.FindWinningMove(board, 2);
+            if (winMove >= 0)
+                return winMove;
+        }
 
-        // Block player
-        move = GameLogicHelper.FindWinningMove(board, 1);
-        if (move >= 0) return move;
+        // Try to block the player 80%
+        if (Random.value < 0.8f)
+        {
+            int blockMove = GameLogicHelper.FindWinningMove(board, 1);
+            if (blockMove >= 0)
+                return blockMove;
+        }
 
-        // Try center with 50% probability
-        if (board[4] == 0 && Random.value < 0.5f)
+        // Take the center if available 60%
+        if (board[4] == 0 && Random.value < 0.6f)
             return 4;
 
-        // Try random corner with 25% probability
+        // Try to take a corner 50%
         int[] corners = { 0, 2, 6, 8 };
         List<int> freeCorners = new List<int>();
-        foreach (int i in corners) if (board[i] == 0) freeCorners.Add(i);
-        if (freeCorners.Count > 0 && Random.value < 0.25f)
+        foreach (int i in corners)
+            if (board[i] == 0)
+                freeCorners.Add(i);
+
+        if (freeCorners.Count > 0 && Random.value < 0.5f)
             return freeCorners[Random.Range(0, freeCorners.Count)];
 
-        // Random fallback
+        // Otherwise, make a random move
         return available[Random.Range(0, available.Count)];
     }
 }
