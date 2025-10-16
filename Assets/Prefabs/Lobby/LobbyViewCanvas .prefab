@@ -1037,6 +1037,7 @@ GameObject:
   - component: {fileID: 4960120022436070252}
   - component: {fileID: 5519373066127721761}
   - component: {fileID: 7372388771183252096}
+  - component: {fileID: 1404087559531886090}
   m_Layer: 5
   m_Name: PlayerSign
   m_TagString: Untagged
@@ -1083,7 +1084,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 8bbb2b2ff1835e34d8fe401788a620d5, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -1101,6 +1102,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1404087559531886090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2756427671673455374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a07acdc464e9c9f4094c210e1b423d09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Dissolve
+  _dissolveTime: 0.75
+  _contentScrollController: {fileID: 1937385149223498308}
 --- !u!1 &2856357333625167732
 GameObject:
   m_ObjectHideFlags: 0
@@ -2075,6 +2090,7 @@ GameObject:
   - component: {fileID: 8368849061184156471}
   - component: {fileID: 5761244102219007670}
   - component: {fileID: 4979811729384111229}
+  - component: {fileID: 6337641155696678902}
   m_Layer: 5
   m_Name: RivalSign
   m_TagString: Untagged
@@ -2121,7 +2137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 8bbb2b2ff1835e34d8fe401788a620d5, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -2139,6 +2155,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6337641155696678902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6224798468034422041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a07acdc464e9c9f4094c210e1b423d09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Dissolve
+  _dissolveTime: 0.75
+  _contentScrollController: {fileID: 0}
 --- !u!1 &6553358376101730824
 GameObject:
   m_ObjectHideFlags: 0

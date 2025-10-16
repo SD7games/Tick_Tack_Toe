@@ -7,16 +7,23 @@ public class AIRivalLobbyController : MonoBehaviour
     [SerializeField] private EmojiData _emojiData;
     [SerializeField] private PlayerLobbyController _playerLobbyController;
 
+    private Dissolve _dissolve;
+
+    private void Awake()
+    {
+        _dissolve = _aiSign.GetComponent<Dissolve>();
+    }
+
     private void Start()
     {
         SetRandomEmoji();
 
-        _playerLobbyController.OnCheckMatchAISign += () => SimulateEmojiOnConflict();
+        _playerLobbyController.OnCheckMatchAISign += SimulateEmojiOnConflict;
     }
 
     private void OnDestroy()
     {
-        _playerLobbyController.OnCheckMatchAISign -= () => SimulateEmojiOnConflict();
+        _playerLobbyController.OnCheckMatchAISign -= SimulateEmojiOnConflict;
     }
 
     private void SetRandomEmoji()
@@ -25,6 +32,8 @@ public class AIRivalLobbyController : MonoBehaviour
         int newEmojiIndex = Random.Range(0, emojiCount);
 
         _aiSign.sprite = _emojiData._emojiSprites[newEmojiIndex];
+        _dissolve?.PlayDissolve();
+
         PlayerPrefsAIManager.AI.SetEmojiAIIndex(newEmojiIndex);
         PlayerPrefsAIManager.Save();
     }
@@ -46,6 +55,8 @@ public class AIRivalLobbyController : MonoBehaviour
         } while (newEmojiIndex == playerEmojiIndex);
 
         _aiSign.sprite = _emojiData._emojiSprites[newEmojiIndex];
+        _dissolve?.PlayDissolve();
+
         PlayerPrefsAIManager.AI.SetEmojiAIIndex(newEmojiIndex);
         PlayerPrefsAIManager.Save();
     }
