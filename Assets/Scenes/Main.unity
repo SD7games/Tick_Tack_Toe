@@ -869,10 +869,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 890918218}
     - target: {fileID: 4780787915566158291, guid: ee58d038033107c408be7499fbd93951, type: 3}
-      propertyPath: _scaleAnimator
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4780787915566158291, guid: ee58d038033107c408be7499fbd93951, type: 3}
       propertyPath: _sceneFaderImage
       value: 
       objectReference: {fileID: 2396086917688603841}

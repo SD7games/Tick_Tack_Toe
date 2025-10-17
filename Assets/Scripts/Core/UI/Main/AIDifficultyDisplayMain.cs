@@ -1,11 +1,9 @@
 using UnityEngine;
-using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class AIDifficultyDisplayUI : MonoBehaviour
 {
-    [SerializeField] private TMP_Text _text;
     [SerializeField] private Image _background;
 
     private readonly Dictionary<string, Color> _difficultyColors = new()

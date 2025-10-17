@@ -62,4 +62,3 @@ MonoBehaviour:
   _sceneFaderImage: {fileID: 0}
   _emojiData: {fileID: 11400000, guid: 6b6c84d126464c040bbed916feba2efe, type: 2}
   _aiRivalController: {fileID: 0}
-  _scaleAnimator: {fileID: 0}
