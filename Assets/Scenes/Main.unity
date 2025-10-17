@@ -748,10 +748,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5872400329511865613, guid: 5151394c9c934a745901ea04fa791d2f, type: 3}
-      propertyPath: m_MatchWidthOrHeight
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7170259583944819771, guid: 5151394c9c934a745901ea04fa791d2f, type: 3}
       propertyPath: m_Name
       value: MainGameView
