@@ -55,7 +55,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _DissolveAmount: 0
-    - _DissolveScale: 30
+    - _DissolveScale: 20
     - _NoiseScale: 30
     - _OutlineThickness: 0.1
     - _SpiralStrenght: 5
