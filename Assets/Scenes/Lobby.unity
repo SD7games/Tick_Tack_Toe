@@ -127,6 +127,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 573126549706550087, guid: 68ad81b3c7659be498ce1215dda573c6, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 31
+      objectReference: {fileID: 0}
     - target: {fileID: 1252497575886891829, guid: 68ad81b3c7659be498ce1215dda573c6, type: 3}
       propertyPath: m_Name
       value: 'LobbyViewCanvas '
