@@ -18,7 +18,6 @@ public class AIDifficultyDisplayUI : MonoBehaviour
     private void Start()
     {
         string diff = PlayerPrefsAIManager.AI.GetStrategy();
-        //_text.text = diff;
 
         if (_difficultyColors.TryGetValue(diff, out var color))
         {
