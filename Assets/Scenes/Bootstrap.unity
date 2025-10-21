@@ -181,10 +181,6 @@ PrefabInstance:
       value: BootstrapViewCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 1923810141376322395, guid: 849a0617cf93e4edc8fec0f9626ebd7d, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1923810141376322395, guid: 849a0617cf93e4edc8fec0f9626ebd7d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}

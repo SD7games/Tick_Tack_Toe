@@ -137,7 +137,7 @@ public class AIComlexityUI : MonoBehaviour
                 _opt1CanvasGroup.blocksRaycasts = false;
                 _opt2CanvasGroup.blocksRaycasts = false;
                 _canPulse = true;
-                StartPulse();
+                //StartPulse();
             })
             .SetLink(gameObject);
     }
