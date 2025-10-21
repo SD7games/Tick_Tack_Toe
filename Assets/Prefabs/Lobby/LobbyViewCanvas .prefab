@@ -3195,7 +3195,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1966795252431452786, guid: fc1ed5330c92824458ff00c1d4304153, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 136098287207820059}
+      addedObject: {fileID: 4679249203615133687}
   m_SourcePrefab: {fileID: 100100000, guid: fc1ed5330c92824458ff00c1d4304153, type: 3}
 --- !u!224 &212088347028959131 stripped
 RectTransform:
@@ -3218,7 +3218,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1966795252431452786, guid: fc1ed5330c92824458ff00c1d4304153, type: 3}
   m_PrefabInstance: {fileID: 5025303313300993037}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &136098287207820059
+--- !u!114 &4679249203615133687
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3227,12 +3227,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 6842660396617158271}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16e1fb0464e48c148b24e03c2b117023, type: 3}
+  m_Script: {fileID: 11500000, guid: bd1d80f6e7cdcef4daf564f7436668a7, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  _duration: 0.8
+  m_EditorClassIdentifier: Assembly-CSharp::FadeAndScaleAnimator
+  _playOnStart: 1
+  _startHidden: 0
+  _delayBeforeAnimate: 0
+  _targetGraphic: {fileID: 3655749250945314984}
+  _useFade: 0
+  _fadeDuration: 0.5
+  _fadeEase: 6
+  _fadeLoop: 0
+  _fadeLoopType: 1
+  _useScale: 1
+  _scaleDuration: 0.8
   _targetScale: 1.2
-  _ease: 27
-  _loopType: 1
-  _loop: 1
-  _targetImage: {fileID: 3655749250945314984}
+  _scaleEase: 27
+  _scaleLoop: 1
+  _scaleLoopType: 1
