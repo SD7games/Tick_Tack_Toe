@@ -7,8 +7,8 @@ public class PlayerLobbyController : MonoBehaviour
 {
     [SerializeField]
     private Image _playerSign;
-    [SerializeField]
-    private TMP_InputField _playerInputField;
+    //[SerializeField]
+    //private TMP_InputField _playerInputField;
     [SerializeField]
     private EmojiData _emojiData;
     [SerializeField]
@@ -20,7 +20,7 @@ public class PlayerLobbyController : MonoBehaviour
     {
         LoadPlayerData();
 
-        _playerInputField.onEndEdit.AddListener(SetName);
+        //_playerInputField.onEndEdit.AddListener(SetName);
         _contentScrollController.OnEmojiSelected += SetPlayerSprite;
     }
 
@@ -29,11 +29,11 @@ public class PlayerLobbyController : MonoBehaviour
         _contentScrollController.OnEmojiSelected -= SetPlayerSprite;
     }
 
-    private void SetName(string name)
-    {
-        PlayerPrefsAIManager.Player.SetName(name);
-        PlayerPrefs.Save();
-    }
+    //private void SetName(string name)
+    //{
+    //    PlayerPrefsAIManager.Player.SetName(name);
+    //    PlayerPrefs.Save();
+    //}
 
     public void SetPlayerSprite(Sprite sprite)
     {
@@ -50,7 +50,7 @@ public class PlayerLobbyController : MonoBehaviour
 
     private void LoadPlayerData()
     {
-        _playerInputField.text = PlayerPrefsAIManager.Player.GetName();
+        //_playerInputField.text = PlayerPrefsAIManager.Player.GetName();
 
         int index = PlayerPrefsAIManager.Player.GetEmojiIndex();
         if (index >= 0 && index < _emojiData._emojiSprites.Count)
