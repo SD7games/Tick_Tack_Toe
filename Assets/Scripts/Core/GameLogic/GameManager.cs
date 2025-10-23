@@ -9,9 +9,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private List<Button> _buttons;
     [SerializeField]
-    private UIView _uiView;
+    private SettingsPopupView _uiView;
     [SerializeField]
-    private BoardView _boardView;
+    private WinLineView _boardView;
     [SerializeField]
     private TMP_Text _playerName;
     [SerializeField]
@@ -117,7 +117,7 @@ public class GameManager : MonoBehaviour
         _board.SetCell(index, currentState, currentSprite);
         CellState[,] boardState = _board.GetBoardState();
 
-        if (_winChecker.IsGameOver(boardState, out CellState winner, out BoardView.WinLineType? winLine))
+        if (_winChecker.IsGameOver(boardState, out CellState winner, out WinLineView.WinLineType? winLine))
         {
             if (winner != CellState.Empty)
             {

@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class UIView : MonoBehaviour
+public class SettingsPopupView : MonoBehaviour
 {
     [SerializeField]
     private TMP_Text _titleText;

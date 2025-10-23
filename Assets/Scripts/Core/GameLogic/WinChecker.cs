@@ -1,6 +1,6 @@
 public class WinChecker
 {
-    public bool IsGameOver(CellState[,] board, out CellState winner, out BoardView.WinLineType? winLine)
+    public bool IsGameOver(CellState[,] board, out CellState winner, out WinLineView.WinLineType? winLine)
     {
         winner = CellState.Empty;
         winLine = null;
@@ -34,7 +34,7 @@ public class WinChecker
             if (cellA != CellState.Empty && cellA == cellB && cellB == cellC)
             {
                 winner = cellA;
-                winLine = (BoardView.WinLineType) i;
+                winLine = (WinLineView.WinLineType) i;
                 return true;
             }
         }
