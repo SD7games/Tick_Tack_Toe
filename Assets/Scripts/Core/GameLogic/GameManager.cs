@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -41,6 +42,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         SetSpriteReferences();
+        UpdatePlayerNames();
         GetGameLogic();
         GetInput();
 
@@ -51,6 +53,11 @@ public class GameManager : MonoBehaviour
         _backToLobbyButton.onClick.AddListener(() => LoadLobbyScene());
 
         RestartGame();
+    }
+
+    private void UpdatePlayerNames()
+    {
+        _playerName.text = PlayerPrefsAIManager.Player.GetName();
     }
 
     private void OnDestroy()

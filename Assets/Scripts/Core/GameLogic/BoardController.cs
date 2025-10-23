@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class BoardController
 {
     private CellState[,] _board = new CellState[3, 3];
@@ -22,16 +23,17 @@ public class BoardController
             {
                 _board[r, c] = CellState.Empty;
                 int index = r * 3 + c;
-                _buttons[index].image.enabled = true;
-                _buttons[index].image.sprite = _defaultSprite;
+
+                var image = _buttons[index].image;
+                image.enabled = true;
+                image.sprite = _defaultSprite;
+
+                // сделать полностью прозрачным (фон не перекрывает)
+                SetAlpha(image, 0f);
+
                 _buttons[index].interactable = true;
             }
         }
-    }
-
-    public CellState[,] GetBoardState()
-    {
-        return _board;
     }
 
     public void SetCell(int index, CellState state, Sprite sprite)
@@ -40,7 +42,13 @@ public class BoardController
         int col = index % 3;
 
         _board[row, col] = state;
-        _buttons[index].image.sprite = sprite;
+
+        var image = _buttons[index].image;
+        image.sprite = sprite;
+
+        // просто включаем полную видимость
+        SetAlpha(image, 1f);
+
         _buttons[index].interactable = false;
     }
 
@@ -59,14 +67,19 @@ public class BoardController
             int col = i % 3;
 
             var button = _buttons[i];
-
-            if (boardState[row, col] == CellState.Empty)
-            {
-                button.image.enabled = false;
-            }
+            var image = button.image;
 
             button.interactable = false;
+
+            // скрыть пустые клетки
+            if (boardState[row, col] == CellState.Empty)
+                SetAlpha(image, 0f);
         }
+    }
+
+    public CellState[,] GetBoardState()
+    {
+        return _board;
     }
 
     public int[] GetBoardAsIntArray()
@@ -89,5 +102,12 @@ public class BoardController
         }
 
         return result;
+    }
+
+    private void SetAlpha(Image image, float alpha)
+    {
+        var color = image.color;
+        color.a = alpha;
+        image.color = color;
     }
 }
