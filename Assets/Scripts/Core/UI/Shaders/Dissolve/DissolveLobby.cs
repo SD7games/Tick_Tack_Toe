@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Dissolve : MonoBehaviour
+public class DissolveLobby : MonoBehaviour
 {
     [SerializeField]
     private float _dissolveTime = 0.75f;

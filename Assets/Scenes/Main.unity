@@ -717,46 +717,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 6021526717938037193, guid: 5151394c9c934a745901ea04fa791d2f, type: 3}
-      propertyPath: simulationSpeed
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6021526717938037193, guid: 5151394c9c934a745901ea04fa791d2f, type: 3}
-      propertyPath: ShapeModule.m_Position.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6021526717938037193, guid: 5151394c9c934a745901ea04fa791d2f, type: 3}
-      propertyPath: ShapeModule.m_Position.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6021526717938037193, guid: 5151394c9c934a745901ea04fa791d2f, type: 3}
-      propertyPath: ShapeModule.m_Rotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6021526717938037193, guid: 5151394c9c934a745901ea04fa791d2f, type: 3}
-      propertyPath: ShapeModule.boxThickness.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6021526717938037193, guid: 5151394c9c934a745901ea04fa791d2f, type: 3}
-      propertyPath: ShapeModule.boxThickness.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6021526717938037193, guid: 5151394c9c934a745901ea04fa791d2f, type: 3}
-      propertyPath: ShapeModule.boxThickness.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6021526717938037193, guid: 5151394c9c934a745901ea04fa791d2f, type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 2000
-      objectReference: {fileID: 0}
-    - target: {fileID: 6021526717938037193, guid: 5151394c9c934a745901ea04fa791d2f, type: 3}
-      propertyPath: EmissionModule.rateOverTime.minScalar
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 6021526717938037193, guid: 5151394c9c934a745901ea04fa791d2f, type: 3}
-      propertyPath: EmissionModule.rateOverDistance.scalar
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7170259583944819771, guid: 5151394c9c934a745901ea04fa791d2f, type: 3}
       propertyPath: m_Name
       value: MainGameView

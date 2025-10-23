@@ -9,11 +9,11 @@ public class AIRivalLobbyController : MonoBehaviour
     [SerializeField] private EmojiData _emojiData;
     [SerializeField] private PlayerLobbyController _playerLobbyController;
 
-    private Dissolve _dissolve;
+    private DissolveLobby _dissolve;
 
     private void Awake()
     {
-        _dissolve = _aiSign.GetComponent<Dissolve>();
+        _dissolve = _aiSign.GetComponent<DissolveLobby>();
     }
 
     private void Start()

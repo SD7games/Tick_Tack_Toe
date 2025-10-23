@@ -28,7 +28,6 @@ public class BoardController
                 image.enabled = true;
                 image.sprite = _defaultSprite;
 
-                // сделать полностью прозрачным (фон не перекрывает)
                 SetAlpha(image, 0f);
 
                 _buttons[index].interactable = true;
@@ -46,10 +45,16 @@ public class BoardController
         var image = _buttons[index].image;
         image.sprite = sprite;
 
-        // просто включаем полную видимость
         SetAlpha(image, 1f);
 
         _buttons[index].interactable = false;
+
+        var button = _buttons[index];
+        var dissolve = button.GetComponent<UIDissolve>();
+        if (dissolve != null)
+        {
+            dissolve.PlayDissolve();
+        }
     }
 
     public bool IsCellEmpty(int index)
@@ -71,7 +76,6 @@ public class BoardController
 
             button.interactable = false;
 
-            // скрыть пустые клетки
             if (boardState[row, col] == CellState.Empty)
                 SetAlpha(image, 0f);
         }

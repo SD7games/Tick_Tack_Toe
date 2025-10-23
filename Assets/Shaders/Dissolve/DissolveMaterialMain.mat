@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-3236631804017541414
+--- !u!114 &-928626399963907943
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DissolveMaterial
-  m_Shader: {fileID: -6465566751694194690, guid: 286eb777f2c588648b9759d8bdeee8c1, type: 3}
+  m_Name: DissolveMaterialMain
+  m_Shader: {fileID: -6465566751694194690, guid: 6a41a29b78e2fbd4ea99f7d346be956b, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -55,11 +55,10 @@ Material:
     m_Ints: []
     m_Floats:
     - _DissolveAmount: 0
-    - _DissolveScale: 20
-    - _NoiseScale: 30
+    - _DissolveScale: 30
     - _OutlineThickness: 0.1
     - _SpiralStrenght: 5
     m_Colors:
-    - _OutlineColor: {r: 1.929919, g: 0, b: 1.2188962, a: 1}
+    - _OutlineColor: {r: 3.121569, g: 0.3294118, b: 2.086275, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

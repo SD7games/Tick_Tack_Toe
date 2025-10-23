@@ -150,6 +150,7 @@ GameObject:
   - component: {fileID: 5837166400709537516}
   - component: {fileID: 4598430395037759110}
   - component: {fileID: 8319285859275251365}
+  - component: {fileID: 7249706933448055076}
   m_Layer: 5
   m_Name: Button5
   m_TagString: Untagged
@@ -196,7 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: c0df8649dcd3c5e4ea57e7f1b3144d64, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -258,6 +259,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7249706933448055076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288631477586528535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62c4fff68b3e7243bfd524352fa62fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIDissolve
+  _dissolveTime: 0.75
 --- !u!1 &647616774189173693
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,6 +434,7 @@ GameObject:
   - component: {fileID: 6262455177457703986}
   - component: {fileID: 5254847874858185729}
   - component: {fileID: 1330513682664897749}
+  - component: {fileID: 4077557878880586182}
   m_Layer: 5
   m_Name: Button7
   m_TagString: Untagged
@@ -466,7 +481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: c0df8649dcd3c5e4ea57e7f1b3144d64, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -528,6 +543,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4077557878880586182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074733810368314193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62c4fff68b3e7243bfd524352fa62fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIDissolve
+  _dissolveTime: 0.75
 --- !u!1 &1212840702129062501
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,6 +568,7 @@ GameObject:
   - component: {fileID: 2316611410234254662}
   - component: {fileID: 7070528114288769786}
   - component: {fileID: 4621292786327336730}
+  - component: {fileID: 8109221089246151819}
   m_Layer: 5
   m_Name: Button6
   m_TagString: Untagged
@@ -586,7 +615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: c0df8649dcd3c5e4ea57e7f1b3144d64, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -648,6 +677,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8109221089246151819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212840702129062501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62c4fff68b3e7243bfd524352fa62fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIDissolve
+  _dissolveTime: 0.75
 --- !u!1 &1244034613558741235
 GameObject:
   m_ObjectHideFlags: 0
@@ -810,6 +852,7 @@ GameObject:
   - component: {fileID: 5607322452552685156}
   - component: {fileID: 3336674022103573174}
   - component: {fileID: 9143655998570871201}
+  - component: {fileID: 4944378677802015218}
   m_Layer: 5
   m_Name: Button8
   m_TagString: Untagged
@@ -856,7 +899,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: c0df8649dcd3c5e4ea57e7f1b3144d64, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -918,6 +961,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4944378677802015218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1561029740262199744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62c4fff68b3e7243bfd524352fa62fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIDissolve
+  _dissolveTime: 0.75
 --- !u!1 &1723178305008610789
 GameObject:
   m_ObjectHideFlags: 0
@@ -1005,6 +1061,7 @@ GameObject:
   - component: {fileID: 5019079625018195364}
   - component: {fileID: 2831002696105962657}
   - component: {fileID: 1484787386204256360}
+  - component: {fileID: 3709796805966083307}
   m_Layer: 5
   m_Name: Button4
   m_TagString: Untagged
@@ -1051,7 +1108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: c0df8649dcd3c5e4ea57e7f1b3144d64, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -1113,6 +1170,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3709796805966083307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939840088061314550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62c4fff68b3e7243bfd524352fa62fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIDissolve
+  _dissolveTime: 0.75
 --- !u!1 &2183624567552420618
 GameObject:
   m_ObjectHideFlags: 0
@@ -1200,6 +1270,7 @@ GameObject:
   - component: {fileID: 2239872077806356468}
   - component: {fileID: 786544806516171171}
   - component: {fileID: 2525129294840571205}
+  - component: {fileID: 4039150812120725112}
   m_Layer: 5
   m_Name: Button2
   m_TagString: Untagged
@@ -1246,7 +1317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: c0df8649dcd3c5e4ea57e7f1b3144d64, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -1308,6 +1379,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4039150812120725112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3173302986298911979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62c4fff68b3e7243bfd524352fa62fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIDissolve
+  _dissolveTime: 0.75
 --- !u!1 &3577022647564294490
 GameObject:
   m_ObjectHideFlags: 0
@@ -1320,6 +1404,7 @@ GameObject:
   - component: {fileID: 8952867091125353979}
   - component: {fileID: 1313541794122394707}
   - component: {fileID: 8049927547723800092}
+  - component: {fileID: 7204518304710715670}
   m_Layer: 5
   m_Name: Button1
   m_TagString: Untagged
@@ -1366,7 +1451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: c0df8649dcd3c5e4ea57e7f1b3144d64, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -1428,6 +1513,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7204518304710715670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3577022647564294490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62c4fff68b3e7243bfd524352fa62fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIDissolve
+  _dissolveTime: 0.75
 --- !u!1 &3733493194791274775
 GameObject:
   m_ObjectHideFlags: 0
@@ -1515,6 +1613,7 @@ GameObject:
   - component: {fileID: 7477081401528468712}
   - component: {fileID: 1914304374765570772}
   - component: {fileID: 4698596600870844412}
+  - component: {fileID: 1031333363518827471}
   m_Layer: 5
   m_Name: Button9
   m_TagString: Untagged
@@ -1561,7 +1660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: c0df8649dcd3c5e4ea57e7f1b3144d64, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -1623,6 +1722,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1031333363518827471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4145001298700105708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62c4fff68b3e7243bfd524352fa62fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIDissolve
+  _dissolveTime: 0.75
 --- !u!1 &5044889967491278942
 GameObject:
   m_ObjectHideFlags: 0
@@ -1846,6 +1958,7 @@ GameObject:
   - component: {fileID: 8653463835098855540}
   - component: {fileID: 7027879170861471343}
   - component: {fileID: 2160022788368890011}
+  - component: {fileID: 6436417719229456821}
   m_Layer: 5
   m_Name: Button3
   m_TagString: Untagged
@@ -1892,7 +2005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: c0df8649dcd3c5e4ea57e7f1b3144d64, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -1954,6 +2067,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6436417719229456821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5891117318325201333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62c4fff68b3e7243bfd524352fa62fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIDissolve
+  _dissolveTime: 0.75
 --- !u!1 &5917959969543166966
 GameObject:
   m_ObjectHideFlags: 0
@@ -3046,7 +3172,7 @@ ParticleSystem:
   m_GameObject: {fileID: 8425617083026966232}
   serializedVersion: 8
   lengthInSec: 50
-  simulationSpeed: 0.5
+  simulationSpeed: 0.3
   stopAction: 2
   cullingMode: 0
   ringBufferMode: 0
@@ -3927,7 +4053,7 @@ ParticleSystem:
     rateOverDistance:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
