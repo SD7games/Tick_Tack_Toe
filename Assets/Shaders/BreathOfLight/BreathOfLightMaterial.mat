@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GridImageMaterial
-  m_Shader: {fileID: -6465566751694194690, guid: 9f0cb7f4b5955d742a91e6073d0e22de, type: 3}
+  m_Name: BreathOfLightMaterial
+  m_Shader: {fileID: -6465566751694194690, guid: 72f977faee5f7c243ab6bdeb2307fa00, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -18,7 +18,8 @@ Material:
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
-  disabledShaderPasses: []
+  disabledShaderPasses:
+  - MOTIONVECTORS
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -45,7 +46,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _BaseEmission: 4
     - _ColorMask: 15
+    - _PulseAmplitude: 1.5
+    - _PulseSpeed: 2
+    - _QueueControl: 0
+    - _QueueOffset: 0
     - _Stencil: 0
     - _StencilComp: 8
     - _StencilOp: 0
@@ -54,7 +60,7 @@ Material:
     - _UIMaskSoftnessX: 1
     - _UIMaskSoftnessY: 1
     m_Colors:
+    - _BaseColor: {r: 0.40138972, g: 0, b: 0.40138972, a: 1}
     - _ClipRect: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 8.474189, g: 0.89426106, b: 5.663655, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
