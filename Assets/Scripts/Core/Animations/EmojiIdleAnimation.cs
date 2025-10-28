@@ -5,16 +5,16 @@ using DG.Tweening;
 public class EmojiIdleAnimation : MonoBehaviour
 {
     [Header("Breathing / Scaling")]
-    [SerializeField] private float _scaleAmplitude = 0.05f; // 0.03–0.08 — "дыхание"
+    [SerializeField] private float _scaleAmplitude = 0.05f; 
     [SerializeField] private float _scaleDuration = 1.6f;
 
     [Header("Tilting / Rotation")]
-    [SerializeField] private float _tiltAngle = 8f;         // градусов по Z
+    [SerializeField] private float _tiltAngle = 8f;         
     [SerializeField] private float _tiltDuration = 2.2f;
 
     private RectTransform _rect;
     private Vector3 _startScale;
-    private Vector3 _startRotationEuler; // сохраняем оригинальный угол (например, Y=180)
+    private Vector3 _startRotationEuler;
     private Tween _scaleTween;
     private Tween _tiltTween;
 
@@ -60,7 +60,6 @@ public class EmojiIdleAnimation : MonoBehaviour
     {
         float angle = _tiltAngle * (Random.value > 0.5f ? 1 : -1);
 
-        // вращаем относительно исходной ориентации
         Vector3 targetRotation = _startRotationEuler + new Vector3(0f, 0f, angle);
 
         _tiltTween = _rect.DOLocalRotate(
