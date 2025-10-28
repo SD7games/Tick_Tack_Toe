@@ -690,10 +690,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DynamicLobbyViewCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 3350131311412175582, guid: 63348ebf7cce73543a05da8edaab0fa0, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 805856047}
     - target: {fileID: 8181660537536085022, guid: 63348ebf7cce73543a05da8edaab0fa0, type: 3}
       propertyPath: m_Pivot.x
       value: 0

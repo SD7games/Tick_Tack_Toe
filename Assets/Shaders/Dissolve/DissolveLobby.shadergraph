@@ -1780,18 +1780,18 @@
     "m_RefNameGeneratedByDisplayName": "MainTex",
     "m_DefaultReferenceName": "_MainTex",
     "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
+    "m_GeneratePropertyBlock": false,
     "m_UseCustomSlotLabel": false,
     "m_CustomSlotLabel": "",
     "m_DismissedVersion": 0,
     "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
+    "overrideHLSLDeclaration": true,
+    "hlslDeclarationOverride": 2,
     "m_Hidden": false,
     "m_PerRendererData": false,
     "m_customAttributes": [],
     "m_Value": {
-        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"9af993ea76f341642b495438118c4f97\",\"type\":3}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "isMainTexture": false,
@@ -3191,10 +3191,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1216.0001220703125,
-            "y": -184.57144165039063,
-            "width": 126.2857666015625,
-            "height": 34.28572082519531
+            "x": -1242.8572998046875,
+            "y": -230.2857208251953,
+            "width": 126.285888671875,
+            "height": 34.28570556640625
         }
     },
     "m_Slots": [

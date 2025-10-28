@@ -144,8 +144,8 @@ MonoBehaviour:
   _scrollRect: {fileID: 8959136454956330666}
   _upButton: {fileID: 3998907590415293835}
   _downButton: {fileID: 6454225850405424604}
-  _scrollStep: 0.35
-  _animationDuration: 0.3
+  _scrollStep: 0.1
+  _animationDuration: 0.8
   _contentScrollController: {fileID: 6801999502515568297}
 --- !u!114 &4923054869153696784
 MonoBehaviour:
@@ -2128,7 +2128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 2100000, guid: 8bbb2b2ff1835e34d8fe401788a620d5, type: 2}
+  m_Material: {fileID: 2100000, guid: 7bd7388d191ce0148be9dff545181e2c, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}

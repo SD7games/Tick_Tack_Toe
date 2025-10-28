@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DissolveMaterialLobby
+  m_Name: DissolveMaterialLobbyAI
   m_Shader: {fileID: -6465566751694194690, guid: 286eb777f2c588648b9759d8bdeee8c1, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -60,6 +60,9 @@ Material:
     - _OutlineThickness: 0.1
     - _SpiralStrenght: 5
     m_Colors:
+    - _AtlasOffset: {r: 0, g: 0, b: 0, a: 0}
+    - _AtlasTiling: {r: 0, g: 0, b: 0, a: 0}
+    - _MeinTex_ST: {r: 0, g: 0, b: 0, a: 0}
     - _OutlineColor: {r: 1.929919, g: 0, b: 1.2188962, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
