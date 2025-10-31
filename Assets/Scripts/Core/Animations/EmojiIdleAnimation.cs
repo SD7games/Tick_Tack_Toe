@@ -5,11 +5,11 @@ using DG.Tweening;
 public class EmojiIdleAnimation : MonoBehaviour
 {
     [Header("Breathing / Scaling")]
-    [SerializeField] private float _scaleAmplitude = 0.05f; 
+    [SerializeField] private float _scaleAmplitude = 0.05f;
     [SerializeField] private float _scaleDuration = 1.6f;
 
     [Header("Tilting / Rotation")]
-    [SerializeField] private float _tiltAngle = 8f;         
+    [SerializeField] private float _tiltAngle = 8f;
     [SerializeField] private float _tiltDuration = 2.2f;
 
     private RectTransform _rect;

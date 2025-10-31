@@ -53,7 +53,7 @@ public static class GameLogicHelper
             if (cell == CellState.Empty) return false;
 
         winner = CellState.Empty;
-        return true; 
+        return true;
     }
 
     public static int FindWinningMove(int[] board, int mark)

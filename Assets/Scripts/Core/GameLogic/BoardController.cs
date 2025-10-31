@@ -4,15 +4,67 @@ using UnityEngine.UI;
 
 public class BoardController
 {
-    private CellState[,] _board = new CellState[3, 3];
-    private List<Button> _buttons;
+    private readonly CellState[,] _board = new CellState[3, 3];
+    private readonly List<Button> _buttons;
     private Sprite _defaultSprite;
+
+    private Sprite _playerEmoji;
+    private Sprite _aiEmoji;
 
     public BoardController(List<Button> buttons, Sprite defaultSprite)
     {
         _buttons = buttons;
         _defaultSprite = defaultSprite;
         Reset();
+    }
+
+    public void LoadEmojis(List<EmojiData> emojiDataByColor)
+    {
+        if (emojiDataByColor == null || emojiDataByColor.Count == 0) return;
+
+        string playerColor = AISettingManager.Player.GetEmojiColor();
+        int playerIndex = AISettingManager.Player.GetEmojiIndex();
+        string aiColor = AISettingManager.AI.GetEmojiAIColor();
+        int aiIndex = AISettingManager.AI.GetEmojiAIIndex();
+
+        EmojiData playerData = emojiDataByColor.Find(colorData => colorData.ColorName == playerColor);
+        EmojiData aiData = emojiDataByColor.Find(colorData => colorData.ColorName == aiColor);
+
+        if (playerData != null && playerData.EmojiSprites.Count > 0)
+            _playerEmoji = playerData.EmojiSprites[Mathf.Clamp(playerIndex, 0, playerData.EmojiSprites.Count - 1)];
+
+        if (aiData != null && aiData.EmojiSprites.Count > 0)
+            _aiEmoji = aiData.EmojiSprites[Mathf.Clamp(aiIndex, 0, aiData.EmojiSprites.Count - 1)];
+    }
+
+    public void SetCell(int index, CellState state, Sprite customSprite = null)
+    {
+        int row = index / 3;
+        int col = index % 3;
+        _board[row, col] = state;
+
+        var button = _buttons[index];
+        var image = button.image;
+
+        Sprite sprite = customSprite ??
+                        (state == CellState.Player ? _playerEmoji :
+                         state == CellState.AI ? _aiEmoji :
+                         _defaultSprite);
+
+        image.sprite = sprite;
+        SetAlpha(image, 1f);
+        button.interactable = false;
+
+        var dissolve = button.GetComponent<UIDissolve>();
+        if (dissolve != null)
+            dissolve.PlayDissolve();
+    }
+
+    public bool IsCellEmpty(int index)
+    {
+        int row = index / 3;
+        int col = index % 3;
+        return _board[row, col] == CellState.Empty;
     }
 
     public void Reset()
@@ -27,41 +79,10 @@ public class BoardController
                 var image = _buttons[index].image;
                 image.enabled = true;
                 image.sprite = _defaultSprite;
-
                 SetAlpha(image, 0f);
-
                 _buttons[index].interactable = true;
             }
         }
-    }
-
-    public void SetCell(int index, CellState state, Sprite sprite)
-    {
-        int row = index / 3;
-        int col = index % 3;
-
-        _board[row, col] = state;
-
-        var image = _buttons[index].image;
-        image.sprite = sprite;
-
-        SetAlpha(image, 1f);
-
-        _buttons[index].interactable = false;
-
-        var button = _buttons[index];
-        var dissolve = button.GetComponent<UIDissolve>();
-        if (dissolve != null)
-        {
-            dissolve.PlayDissolve();
-        }
-    }
-
-    public bool IsCellEmpty(int index)
-    {
-        int row = index / 3;
-        int col = index % 3;
-        return _board[row, col] == CellState.Empty;
     }
 
     public void DisableAll(CellState[,] boardState)
@@ -73,7 +94,6 @@ public class BoardController
 
             var button = _buttons[i];
             var image = button.image;
-
             button.interactable = false;
 
             if (boardState[row, col] == CellState.Empty)
@@ -81,22 +101,17 @@ public class BoardController
         }
     }
 
-    public CellState[,] GetBoardState()
-    {
-        return _board;
-    }
+    public CellState[,] GetBoardState() => _board;
 
     public int[] GetBoardAsIntArray()
     {
-        var result = new int[9];
-        var state = GetBoardState();
-
-        for (int i = 0; i < 3; i++)
+        int[] result = new int[9];
+        for (int r = 0; r < 3; r++)
         {
-            for (int j = 0; j < 3; j++)
+            for (int c = 0; c < 3; c++)
             {
-                int index = i * 3 + j;
-                result[index] = state[i, j] switch
+                int index = r * 3 + c;
+                result[index] = _board[r, c] switch
                 {
                     CellState.Player => 1,
                     CellState.AI => 2,
@@ -104,7 +119,6 @@ public class BoardController
                 };
             }
         }
-
         return result;
     }
 

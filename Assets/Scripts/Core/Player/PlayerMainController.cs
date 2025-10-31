@@ -1,15 +1,13 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class PlayerMainController : MonoBehaviour
 {
-    [SerializeField]
-    private TMP_Text _playerName;
-    [SerializeField]
-    private Image _playerSprite;
-    [SerializeField]
-    private EmojiData _emojiData;
+    [SerializeField] private TMP_Text _playerName;
+    [SerializeField] private Image _playerSprite;
+    [SerializeField] private List<EmojiData> _emojiDataByColor;
 
     private void Start()
     {
@@ -18,17 +16,18 @@ public class PlayerMainController : MonoBehaviour
 
     private void LoadPlayerData()
     {
-        _playerName.text = PlayerPrefsAIManager.Player.GetName();
+        _playerName.text = AISettingManager.Player.GetName();
 
-        int index = PlayerPrefsAIManager.Player.GetEmojiIndex();
+        string colorName = AISettingManager.Player.GetEmojiColor();
+        int emojiIndex = AISettingManager.Player.GetEmojiIndex();
 
-        if (index >= 0 && index < _emojiData._emojiSprites.Count)
+        EmojiData colorData = _emojiDataByColor.Find(colorData => colorData.ColorName == colorName);
+
+        if (colorData == null) return;
+
+        if (emojiIndex >= 0 && emojiIndex < colorData.EmojiSprites.Count)
         {
-            _playerSprite.sprite = _emojiData._emojiSprites[index];
-        }
-        else
-        {
-            Debug.Log("invalid player emoji index" + index);
+            _playerSprite.sprite = colorData.EmojiSprites[emojiIndex];
         }
     }
 }

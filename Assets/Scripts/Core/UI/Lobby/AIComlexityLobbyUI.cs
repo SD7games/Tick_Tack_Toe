@@ -5,9 +5,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AIComlexityUI : MonoBehaviour
+public class AIComlexityLobbyUI : MonoBehaviour
 {
-    [SerializeField] 
+    [SerializeField]
     private Button _mainButton;
     [SerializeField]
     private Button _opt1Button;
@@ -47,7 +47,7 @@ public class AIComlexityUI : MonoBehaviour
         _opt1Pos = _opt1RT.anchoredPosition;
         _opt2Pos = _opt2RT.anchoredPosition;
 
-        _currentDifficulty = PlayerPrefsAIManager.AI.GetStrategy();
+        _currentDifficulty = AISettingManager.AI.GetStrategy();
 
         UpdateMainButton(_currentDifficulty);
         HideOptionsInstant();
@@ -60,7 +60,7 @@ public class AIComlexityUI : MonoBehaviour
     }
 
     private void OnDisable() => StopAllTweens();
-    private void OnDestroy() => StopAllTweens();    
+    private void OnDestroy() => StopAllTweens();
 
     private void ToggleOptions()
     {
@@ -75,8 +75,8 @@ public class AIComlexityUI : MonoBehaviour
         string newDiff = selectedButton.GetComponentInChildren<TMP_Text>().text;
         _currentDifficulty = newDiff;
 
-        PlayerPrefsAIManager.AI.SetStrategy(_currentDifficulty);
-        PlayerPrefsAIManager.Save();
+        AISettingManager.AI.SetStrategy(_currentDifficulty);
+        AISettingManager.Save();
 
         UpdateMainButton(_currentDifficulty);
         HideOptionsAnimated();
@@ -137,7 +137,6 @@ public class AIComlexityUI : MonoBehaviour
                 _opt1CanvasGroup.blocksRaycasts = false;
                 _opt2CanvasGroup.blocksRaycasts = false;
                 _canPulse = true;
-                //StartPulse();
             })
             .SetLink(gameObject);
     }
@@ -166,7 +165,7 @@ public class AIComlexityUI : MonoBehaviour
     {
         _mainButton.GetComponentInChildren<TMP_Text>().text = diff;
         _mainButton.GetComponent<Image>().color = _difficultyColors[diff];
-    }    
+    }
 
     private void StartPulse()
     {

@@ -180,7 +180,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f645e9f77a403154da64d8e90199b8ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _emojiData: {fileID: 11400000, guid: 6b6c84d126464c040bbed916feba2efe, type: 2}
   _emojiButtonPrefab: {fileID: 2987793709936732318, guid: 64f914c22fbc2e14fba9a9cd81f19aaa, type: 3}
   _contentParent: {fileID: 7399529962936593158}
 --- !u!1 &494373236707075988
@@ -2078,6 +2077,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9057304954836499464}
+  - component: {fileID: 6720350770260328478}
   m_Layer: 5
   m_Name: ColorButtons
   m_TagString: Untagged
@@ -2113,6 +2113,40 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6720350770260328478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6709207754333208899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 462740c588604e44cb7285ad0052050f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ColorSwitcher
+  _colorButtons:
+  - {fileID: 5899847900046279063}
+  - {fileID: 4204197352208901355}
+  - {fileID: 7664926725963241381}
+  - {fileID: 5617634133758651448}
+  - {fileID: 6834851592006016813}
+  - {fileID: 4198214557428522058}
+  - {fileID: 1890416142423779507}
+  - {fileID: 5869946112652002571}
+  - {fileID: 2234404675308138808}
+  _emojiDataByColor:
+  - {fileID: 11400000, guid: 6b6c84d126464c040bbed916feba2efe, type: 2}
+  - {fileID: 11400000, guid: 3651e23b5c62b054081d0b4ab62ddf78, type: 2}
+  - {fileID: 11400000, guid: 598f39a16aece63438901d8d79a6facc, type: 2}
+  - {fileID: 11400000, guid: 1146512a3974f414096273dd8d448e9c, type: 2}
+  - {fileID: 11400000, guid: 3ea32681becfc3847a0e43021d36c4d1, type: 2}
+  - {fileID: 11400000, guid: a9d8ed788f4fa324ea37a1d430a311be, type: 2}
+  - {fileID: 11400000, guid: d461605546b33e34a86648e35035e66c, type: 2}
+  - {fileID: 11400000, guid: 3e51d83b789c126498e5febe8c445ab4, type: 2}
+  - {fileID: 11400000, guid: e940a4f66e5c46f40bd623b63019a1ec, type: 2}
+  _emojiDataSetter: {fileID: 0}
+  _contentScrollController: {fileID: 6801999502515568297}
 --- !u!1 &7118069997436735128
 GameObject:
   m_ObjectHideFlags: 0

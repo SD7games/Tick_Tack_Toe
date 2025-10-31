@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f9f821b898935d4f965e7b69ed0edfb, type: 3}
-  m_Name: EmojiData
+  m_Name: EmojiVioletData
   m_EditorClassIdentifier: 
-  _emojiSprites:
-  - {fileID: 21300000, guid: 3415b516a683a664594c66c02a88ccb1, type: 3}
-  - {fileID: 21300000, guid: f98ef82e267d39b49a9297f8a342cb2a, type: 3}
+  ColorName: Violet
+  EmojiSprites:
   - {fileID: 21300000, guid: 01ca6135e9648ae4d874ae0a3fa98d35, type: 3}
   - {fileID: 21300000, guid: 8169720fad2050349a6b3031571b1c0d, type: 3}
   - {fileID: 21300000, guid: 2cae23634594fa74f9684a9b3206184e, type: 3}

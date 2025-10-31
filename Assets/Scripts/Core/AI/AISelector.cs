@@ -3,14 +3,14 @@ using UnityEngine;
 public class AISelector : MonoBehaviour
 {
     [SerializeField]
-    private AIComlexityUI _ui;
+    private AIComlexityLobbyUI _ui;
 
     private void Start()
     {
         if (_ui != null)
             _ui.OnDifficultyChanged += HandleDifficultyChange;
 
-        string saved = PlayerPrefsAIManager.AI.GetStrategy();
+        string saved = AISettingManager.AI.GetStrategy();
         HandleDifficultyChange(saved);
     }
 
@@ -22,7 +22,7 @@ public class AISelector : MonoBehaviour
 
     private void HandleDifficultyChange(string difficulty)
     {
-        PlayerPrefsAIManager.AI.SetStrategy(difficulty);
-        PlayerPrefsAIManager.Save();
+        AISettingManager.AI.SetStrategy(difficulty);
+        AISettingManager.Save();
     }
 }

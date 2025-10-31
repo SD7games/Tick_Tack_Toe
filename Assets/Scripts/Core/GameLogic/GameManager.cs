@@ -4,26 +4,23 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+[DisallowMultipleComponent]
 public class GameManager : MonoBehaviour
 {
-    [SerializeField]
-    private List<Button> _buttons;
-    [SerializeField]
-    private SettingsPopupView _uiView;
-    [SerializeField]
-    private WinLineView _boardView;
-    [SerializeField]
-    private TMP_Text _playerName;
-    [SerializeField]
-    private TMP_Text _aiRivalName;
-    [SerializeField]
-    private Button _backToLobbyButton;
-    [SerializeField]
-    private Image _sceneFaderImage;
-    [SerializeField]
-    private EmojiData _emojiData;
-    [SerializeField]
-    private AIRivalMoveController _aiRivalController;
+    [Header("Board Elements")]
+    [SerializeField] private List<Button> _buttons;
+    [SerializeField] private SettingsPopupView _uiView;
+    [SerializeField] private WinLineView _boardView;
+    [SerializeField] private AIRivalMoveController _aiRivalController;
+
+    [Header("UI Elements")]
+    [SerializeField] private TMP_Text _playerName;
+    [SerializeField] private TMP_Text _aiRivalName;
+    [SerializeField] private Button _backToLobbyButton;
+    [SerializeField] private Image _sceneFaderImage;
+
+    [Header("Emoji Data (all colors)")]
+    [SerializeField] private List<EmojiData> _emojiDataByColor;
 
     private float _fadeDuration = 1.5f;
 
@@ -42,21 +39,15 @@ public class GameManager : MonoBehaviour
     {
         SetSpriteReferences();
         UpdatePlayerNames();
-        GetGameLogic();
-        GetInput();
+        InitializeGameLogic();
+        InitializeInput();
 
         _aiRivalController.Initialize(_input, _board);
 
         _uiView.OnRestartClicked += RestartGame;
-
-        _backToLobbyButton.onClick.AddListener(() => LoadLobbyScene());
+        _backToLobbyButton.onClick.AddListener(LoadLobbyScene);
 
         RestartGame();
-    }
-
-    private void UpdatePlayerNames()
-    {
-        _playerName.text = PlayerPrefsAIManager.Player.GetName();
     }
 
     private void OnDestroy()
@@ -64,39 +55,60 @@ public class GameManager : MonoBehaviour
         if (_input != null)
             _input.OnCellClicked -= OnCellClicked;
 
-        if (_board != null)
+        if (_uiView != null)
             _uiView.OnRestartClicked -= RestartGame;
-    }
-
-    private void GetGameLogic()
-    {
-        _board = new BoardController(_buttons, _defaultSprite);
-        _turnManager = new TurnManager(_playerSprite, _aiRivalSprite, _playerName, _aiRivalName);
-        _winChecker = new WinChecker();
-    }
-
-    private void GetInput()
-    {
-        _input = new InputController(_buttons);
-        _input.OnCellClicked += OnCellClicked;
     }
 
     private void SetSpriteReferences()
     {
         _defaultSprite = _buttons[0].GetComponent<Image>().sprite;
 
-        _playerSprite = _emojiData.GetEmojiByIndex(PlayerPrefsAIManager.Player.GetEmojiIndex());
-        _aiRivalSprite = _emojiData.GetEmojiByIndex(PlayerPrefsAIManager.AI.GetEmojiAIIndex());
+        string playerColor = AISettingManager.Player.GetEmojiColor();
+        int playerIndex = AISettingManager.Player.GetEmojiIndex();
+        string aiColor = AISettingManager.AI.GetEmojiAIColor();
+        int aiIndex = AISettingManager.AI.GetEmojiAIIndex();
+
+        EmojiData playerData = _emojiDataByColor.Find(colorData => colorData.ColorName == playerColor);
+        EmojiData aiData = _emojiDataByColor.Find(colorData => colorData.ColorName == aiColor);
+
+        if (playerData != null && playerData.EmojiSprites.Count > 0)
+            _playerSprite = playerData.GetEmojiByIndex(playerIndex);
+
+        if (aiData != null && aiData.EmojiSprites.Count > 0)
+            _aiRivalSprite = aiData.GetEmojiByIndex(aiIndex);
+    }
+
+    private void UpdatePlayerNames()
+    {
+        _playerName.text = AISettingManager.Player.GetName();
+        _aiRivalName.text = "AI";
+    }
+
+    private void InitializeGameLogic()
+    {
+        _board = new BoardController(_buttons, _defaultSprite);
+        _board.LoadEmojis(_emojiDataByColor);
+
+        _turnManager = new TurnManager(_playerSprite, _aiRivalSprite, _playerName, _aiRivalName);
+        _winChecker = new WinChecker();
+    }
+
+    private void InitializeInput()
+    {
+        _input = new InputController(_buttons);
+        _input.OnCellClicked += OnCellClicked;
     }
 
     private void RestartGame()
     {
         _aiRivalController.StopAllCoroutines();
         _input.AllowInput();
+
         SceneFader();
         _board.Reset();
         _turnManager.Reset();
         _boardView.HideAllLines();
+
         _uiView.ShowCurrentPlayer(_turnManager.CurrentName());
     }
 
@@ -140,9 +152,7 @@ public class GameManager : MonoBehaviour
             _uiView.ShowCurrentPlayer(_turnManager.CurrentName());
 
             if (_turnManager.CurrentState() == CellState.AI)
-            {
                 _aiRivalController.MakeMove();
-            }
         }
     }
 

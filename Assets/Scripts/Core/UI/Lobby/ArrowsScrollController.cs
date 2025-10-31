@@ -2,7 +2,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScrollController : MonoBehaviour
+public class ArrowsScrollController : MonoBehaviour
 {
     [SerializeField]
     private ScrollRect _scrollRect;

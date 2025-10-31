@@ -22,17 +22,17 @@ public class InputController
             _buttons[i].onClick.AddListener(() => OnButtonClick(index));
         }
     }
-    
+
     public void BlockInput()
     {
         _isBlocked = true;
     }
-    
+
     public void AllowInput()
     {
         _isBlocked = false;
     }
-    
+
     public void SetInteractable(bool interactable)
     {
         foreach (var button in _buttons)
@@ -41,7 +41,7 @@ public class InputController
                 button.interactable = interactable;
         }
     }
-    
+
     public void TemporarilyBlock(MonoBehaviour context, float duration)
     {
         if (context == null)
@@ -67,7 +67,7 @@ public class InputController
 
         OnCellClicked?.Invoke(index);
     }
-   
+
     public void SimulateClick(int index)
     {
         if (_buttons[index] == null || !_buttons[index].interactable) return;

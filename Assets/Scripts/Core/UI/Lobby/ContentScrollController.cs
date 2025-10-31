@@ -2,40 +2,34 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
+[DisallowMultipleComponent]
 public class ContentScrollController : MonoBehaviour
 {
-    [SerializeField]
-    private EmojiData _emojiData;
-    [SerializeField]
-    private GameObject _emojiButtonPrefab;
-    [SerializeField]
-    private Transform _contentParent;
+    [SerializeField] private GameObject _emojiButtonPrefab;
+    [SerializeField] private Transform _contentParent;
 
     public event Action<Sprite> OnEmojiSelected;
     public event Action OnGenerationComplete;
 
-    private void Start()
+    public void SetEmojiData(EmojiData emojiData)
     {
-        GenerateEmojiButtons();
-    }
+        if (emojiData == null || emojiData.EmojiSprites == null) return;
 
-    private void GenerateEmojiButtons()
-    {
         foreach (Transform child in _contentParent)
-        {
             Destroy(child.gameObject);
-        }
 
-        foreach (var emoji in _emojiData._emojiSprites)
+        foreach (var sprite in emojiData.EmojiSprites)
         {
             var buttonGO = Instantiate(_emojiButtonPrefab, _contentParent);
             var image = buttonGO.GetComponentInChildren<Image>();
-            image.sprite = emoji;
+            image.sprite = sprite;
 
             var button = buttonGO.GetComponent<Button>();
             button.onClick.AddListener(() =>
             {
-                OnEmojiSelected?.Invoke(emoji);
+                OnEmojiSelected?.Invoke(sprite);
+                AISettingManager.Player.SetEmojiIndex(emojiData.EmojiSprites.IndexOf(sprite));
+                AISettingManager.Save();
             });
         }
 

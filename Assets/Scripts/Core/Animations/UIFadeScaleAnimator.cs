@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [DisallowMultipleComponent]
-public class FadeAndScaleAnimator : MonoBehaviour
+public class UIFadeScaleAnimator : MonoBehaviour
 {
     [Header("General Settings")]
     [SerializeField] private bool _playOnStart = false;

@@ -1,65 +1,43 @@
 using System;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+[DisallowMultipleComponent]
 public class PlayerLobbyController : MonoBehaviour
 {
-    [SerializeField]
-    private Image _playerSign;
-    //[SerializeField]
-    //private TMP_InputField _playerInputField;
-    [SerializeField]
-    private EmojiData _emojiData;
-    [SerializeField]
-    private ContentScrollController _contentScrollController;
+    [Header("Refs")]
+    [SerializeField] private Image _playerSign;
+    [SerializeField] private ContentScrollController _contentScroll;
+
+    [Header("State")]
+    [SerializeField] private EmojiData _currentEmojiData;
 
     public event Action OnCheckMatchAISign;
 
     private void Start()
     {
-        LoadPlayerData();
-
-        //_playerInputField.onEndEdit.AddListener(SetName);
-        _contentScrollController.OnEmojiSelected += SetPlayerSprite;
+        if (_currentEmojiData != null)
+            _contentScroll.SetEmojiData(_currentEmojiData);
     }
 
-    private void OnDestroy()
+    public void SetEmojiData(EmojiData newData)
     {
-        _contentScrollController.OnEmojiSelected -= SetPlayerSprite;
+        if (newData == null) return;
+
+        _currentEmojiData = newData;
+
+        AISettingManager.Player.SetEmojiColor(_currentEmojiData.ColorName);
+        AISettingManager.Save();
+
+        _contentScroll.SetEmojiData(_currentEmojiData);
+
+        int idx = Mathf.Clamp(AISettingManager.Player.GetEmojiIndex(), 0,
+                              _currentEmojiData.EmojiSprites.Count - 1);
+        if (_playerSign != null && _currentEmojiData.EmojiSprites.Count > 0)
+            _playerSign.sprite = _currentEmojiData.EmojiSprites[idx];
+
+        OnCheckMatchAISign?.Invoke();
     }
 
-    //private void SetName(string name)
-    //{
-    //    PlayerPrefsAIManager.Player.SetName(name);
-    //    PlayerPrefs.Save();
-    //}
-
-    public void SetPlayerSprite(Sprite sprite)
-    {
-        int index = _emojiData._emojiSprites.IndexOf(sprite);
-
-        if (index >= 0)
-        {
-            _playerSign.sprite = sprite;
-            PlayerPrefsAIManager.Player.SetEmojiIndex(index);
-            PlayerPrefsAIManager.Save();
-            OnCheckMatchAISign.Invoke();
-        }
-    }
-
-    private void LoadPlayerData()
-    {
-        //_playerInputField.text = PlayerPrefsAIManager.Player.GetName();
-
-        int index = PlayerPrefsAIManager.Player.GetEmojiIndex();
-        if (index >= 0 && index < _emojiData._emojiSprites.Count)
-        {
-            _playerSign.sprite = _emojiData._emojiSprites[index];
-        }
-        else
-        {
-            Debug.Log("Invalid player index" + index);
-        }
-    }
+    public EmojiData GetCurrentEmojiData() => _currentEmojiData;
 }

@@ -17,7 +17,7 @@ public class AIRivalMoveController : MonoBehaviour
 
     private void LoadStrategy()
     {
-        string strategyName = PlayerPrefsAIManager.AI.GetStrategy();
+        string strategyName = AISettingManager.AI.GetStrategy();
         switch (strategyName)
         {
             case "Easy":

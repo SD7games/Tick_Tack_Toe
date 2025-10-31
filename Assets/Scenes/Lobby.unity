@@ -560,10 +560,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AIRivalLobby
       objectReference: {fileID: 0}
-    - target: {fileID: 6699670222053577116, guid: 80980d2b90d5d3f4898f916530343009, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -580,6 +576,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9ec0593e23f1294c9f0f1c801b1c2b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2056865272 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4262719120192289379, guid: 81da38bfc79c42e4882182c010fb434c, type: 3}
+  m_PrefabInstance: {fileID: 2067199299}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b73d17fbb1fe93b49aa3af06a203d1f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EmojiDataSetter
 --- !u!1001 &2067199299
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -633,7 +640,7 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5932995981778098031}
     - target: {fileID: 6863368328980441272, guid: 81da38bfc79c42e4882182c010fb434c, type: 3}
-      propertyPath: _contentScrollController
+      propertyPath: _contentScroll
       value: 
       objectReference: {fileID: 3385362666612963243}
     - target: {fileID: 8788772741477665887, guid: 81da38bfc79c42e4882182c010fb434c, type: 3}
@@ -694,6 +701,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 805856047}
+    - target: {fileID: 6720350770260328478, guid: 63348ebf7cce73543a05da8edaab0fa0, type: 3}
+      propertyPath: _playerLobby
+      value: 
+      objectReference: {fileID: 2056865268}
+    - target: {fileID: 6720350770260328478, guid: 63348ebf7cce73543a05da8edaab0fa0, type: 3}
+      propertyPath: _emojiDataSetter
+      value: 
+      objectReference: {fileID: 2056865272}
     - target: {fileID: 8181660537536085022, guid: 63348ebf7cce73543a05da8edaab0fa0, type: 3}
       propertyPath: m_Pivot.x
       value: 0
